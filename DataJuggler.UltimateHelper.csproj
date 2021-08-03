@@ -10,13 +10,15 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2021</Copyright>
-    <Version>1.5.6</Version>
+    <Version>1.5.7</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
-    <PackageReleaseNotes>Version 1.5.6 - I did two things. One I got rid of WordParser, even though it breaks many of my own apps.
+    <PackageReleaseNotes>Version 1.5.7 - Oops. I forgot to make the new ExportTextLines static.
+
+Version 1.5.6 - I did two things. One I got rid of WordParser, even though it breaks many of my own apps.
 TextHelper has the exact two methods for GetTextLines and GetWords.
 The other thing I added was a new method called ExportTextLines, to make it easy to reassemble a List of
 TextLines back into a File or block.
@@ -66,7 +68,7 @@ I brought over WordParser.cs.
 Version 1.2.0 This is my first attempt at Multi-Targeting so this application is availaable to .Net Core 3.1 and .Net Standard 2.1.
 
 </PackageReleaseNotes>
-    <AssemblyVersion>1.5.6.0</AssemblyVersion>
+    <AssemblyVersion>1.5.7.0</AssemblyVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>False</IncludeSymbols>
   </PropertyGroup>

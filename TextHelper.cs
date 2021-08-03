@@ -393,7 +393,7 @@ namespace DataJuggler.UltimateHelper
             /// <param name="lines">A collection of TextLines to rebuild into a file or block'</param>
             /// <param name="mustContainText">If present, a line must have this to be added.</param>
             /// <param name="mustNotContainText">If present, a line with will not be added</param>
-            public string ExportTextLines(List<TextLine> lines, string mustContainText = "", string mustNotContainText = "")
+            public static string ExportTextLines(List<TextLine> lines, string mustContainText = "", string mustNotContainText = "")
             {
                 // initial value
                 string result = "";
