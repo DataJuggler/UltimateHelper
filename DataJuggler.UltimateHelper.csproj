@@ -10,13 +10,18 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2021</Copyright>
-    <Version>1.5.5</Version>
+    <Version>1.5.6</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
-    <PackageReleaseNotes>Version 1.5.5 - I had been working on a method in the Word Parser, and I had to make a change to parse some text that didn't end in new line characters. I fixed and checked it right back in, so hopefully
+    <PackageReleaseNotes>Version 1.5.6 - I did two things. One I got rid of WordParser, even though it breaks many of my own apps.
+TextHelper has the exact two methods for GetTextLines and GetWords.
+The other thing I added was a new method called ExportTextLines, to make it easy to reassemble a List of
+TextLines back into a File or block.
+
+Version 1.5.5 - I had been working on a method in the Word Parser, and I had to make a change to parse some text that didn't end in new line characters. I fixed and checked it right back in, so hopefully
 no one downloaded this package in the last 5 minutes.
 
 Version 1.5.4 - Remove the code that create the symbols package, as someone updated the project with 
@@ -61,7 +66,7 @@ I brought over WordParser.cs.
 Version 1.2.0 This is my first attempt at Multi-Targeting so this application is availaable to .Net Core 3.1 and .Net Standard 2.1.
 
 </PackageReleaseNotes>
-    <AssemblyVersion>1.5.5.0</AssemblyVersion>
+    <AssemblyVersion>1.5.6.0</AssemblyVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>False</IncludeSymbols>
   </PropertyGroup>
