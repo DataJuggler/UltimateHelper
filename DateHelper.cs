@@ -139,6 +139,130 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
             
+            #region GetMonthName(DateTime date)
+            /// <summary>
+            /// This method returns the Month Name
+            /// </summary>
+            public static string GetMonthName(DateTime date, bool abbreviate = false)
+            {
+                // initial value
+                string monthName = "";
+
+                // Get the month
+                int month = date.Month;
+
+                switch (month)
+                {
+                    case 1:
+
+                        // Get the month name
+                        monthName = "January";
+
+                        // required
+                        break;
+
+                    case 2:
+
+                        // Get the month name
+                        monthName = "February";
+
+                        // required
+                        break;
+
+                    case 3:
+
+                        // Get the month name
+                        monthName = "March";
+
+                        // required
+                        break;
+
+                    case 4:
+
+                        // Get the month name
+                        monthName = "April";
+
+                        // required
+                        break;
+
+                    case 5:
+
+                        // Get the month name
+                        monthName = "May";
+
+                        // required
+                        break;
+
+                    case 6:
+
+                        // Get the month name
+                        monthName = "June";
+
+                        // required
+                        break;
+
+                    case 7:
+
+                        // Get the month name
+                        monthName = "July";
+
+                        // required
+                        break;
+
+                    case 8:
+
+                        // Get the month name
+                        monthName = "August";
+
+                        // required
+                        break;
+
+                    case 9:
+
+                        // Get the month name
+                        monthName = "September";
+
+                        // required
+                        break;
+
+                    case 10:
+
+                        // Get the month name
+                        monthName = "October";
+
+                        // required
+                        break;
+
+                    case 11:
+
+                        // Get the month name
+                        monthName = "November";
+
+                        // required
+                        break;
+
+                    case 12:
+
+                        // Get the month name
+                        monthName = "December";
+
+                        // required
+                        break;
+                }
+
+                // if abbreviate is true
+                if ((abbreviate) && (TextHelper.Exists(monthName)))
+                {
+                    // Get the first 3 characters
+                    monthName = TextHelper.CapitalizeFirstChar(monthName.Substring(0, 3).ToLower());
+                }
+
+                
+                // return value
+                return monthName;
+            }
+            #endregion
+            
             #region GetMonthStart(int year = 0, int month = 0)
             /// <summary>
             /// This method returns the Month Start
@@ -173,6 +297,34 @@ namespace DataJuggler.UltimateHelper
 
                 // return value
                 return monthStart;
+            }
+            #endregion
+
+            #region GetShortDateText(DateTime date, bool abbreviateMonthName = true, bool addComma = true)
+            /// <summary>
+            /// This method returns the date as [Month Abbreviation] [Day] [Year], ideal for file names
+            /// </summary>
+            public static string GetShortDateText(DateTime date, bool abbreviateMonthName = true, bool addComma = true)
+            {
+                // initial value
+                string text = "";
+
+                // Get the month
+                string month = GetMonthName(date, abbreviateMonthName);
+                
+                if (addComma)
+                {
+                    // Create the text such as August 5, 2021 or Aug 5, 2021
+                    text = month + " " + date.Day + ", " + date.Year;
+                }
+                else
+                {
+                    // Create the text such as August 5 2021 or Aug 5 2021
+                    text = month + " " + date.Day + " " + date.Year;
+                }
+
+                // return value
+                return text;
             }
             #endregion
             

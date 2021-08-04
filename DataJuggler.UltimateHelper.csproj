@@ -10,13 +10,15 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2021</Copyright>
-    <Version>1.5.7</Version>
+    <Version>1.5.8</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
-    <PackageReleaseNotes>Version 1.5.7 - Oops. I forgot to make the new ExportTextLines static.
+    <PackageReleaseNotes>Version 1.5.8 - I added a couple of methods to DateHelper to get the month names and GetDateShortText
+
+Version 1.5.7 - Oops. I forgot to make the new ExportTextLines static.
 
 Version 1.5.6 - I did two things. One I got rid of WordParser, even though it breaks many of my own apps.
 TextHelper has the exact two methods for GetTextLines and GetWords.
@@ -68,7 +70,7 @@ I brought over WordParser.cs.
 Version 1.2.0 This is my first attempt at Multi-Targeting so this application is availaable to .Net Core 3.1 and .Net Standard 2.1.
 
 </PackageReleaseNotes>
-    <AssemblyVersion>1.5.7.0</AssemblyVersion>
+    <AssemblyVersion>1.5.8.0</AssemblyVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>False</IncludeSymbols>
   </PropertyGroup>
