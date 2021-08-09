@@ -57,6 +57,75 @@ namespace DataJuggler.UltimateHelper
 
             #endregion
 
+            #region EnsureInRange(int value, int minValue, int MaxValue)
+            /// <summary>
+            /// This method returns the In Range
+            /// </summary>
+            public static int EnsureInRange(int value, int minValue, int maxValue)
+            {
+                // if too low
+                if (value < minValue)
+                {
+                    // set to minValue
+                    value = minValue;
+                }
+                else if (value > maxValue)
+                {
+                    // set to maxValue
+                    value = maxValue;
+                }
+
+                // return value
+                return value;
+            }
+            #endregion
+
+            #region EnsureInRange(double value, double minValue, double MaxValue)
+            /// <summary>
+            /// This method returns the In Range
+            /// </summary>
+            public static double EnsureInRange(double value, double minValue, double maxValue)
+            {
+                // if too low
+                if (value < minValue)
+                {
+                    // set to minValue
+                    value = minValue;
+                }
+                else if (value > maxValue)
+                {
+                    // set to maxValue
+                    value = maxValue;
+                }
+
+                // return value
+                return value;
+            }
+            #endregion
+
+            #region EnsureInRange(Decimal value, Decimal minValue, Decimal MaxValue)
+            /// <summary>
+            /// This method returns the In Range
+            /// </summary>
+            public static Decimal EnsureInRange(Decimal value, Decimal minValue, Decimal maxValue)
+            {
+                // if too low
+                if (value < minValue)
+                {
+                    // set to minValue
+                    value = minValue;
+                }
+                else if (value > maxValue)
+                {
+                    // set to maxValue
+                    value = maxValue;
+                }
+
+                // return value
+                return value;
+            }
+            #endregion
+            
             #region GetNumericValueOfWord(string word)
             /// <summary>
             /// This method returns the numeric value of the word given.
