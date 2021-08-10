@@ -10,13 +10,20 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2021</Copyright>
-    <Version>1.5.9</Version>
+    <Version>1.6.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
-    <PackageReleaseNotes>Version 1.5.9 - I added a new EnsureInRange method to NumericHelper.
+    <PackageReleaseNotes>Version 1.6.0 - I removed SQLParameterHelper, which had a dependency on System.Data.SQLClient.
+I moved SQLParameterHelper to its own project DataJuggler.UltimateHelper.SQL
+I also added another override for the CheckInRange and the EnsureInRange to NumericHelper, where
+you can now pass in a list of integers, doubles or decimals to work with sets of numbers.
+
+Version 1.5.12 - I added a new method IsInRange to NumericHelper.
+
+Version 1.5.11 - I added a new method EnsureInRange to NumericHelper.
 
 Version 1.5.8 - I added a couple of methods to DateHelper to get the month names and GetDateShortText
 
@@ -72,18 +79,14 @@ I brought over WordParser.cs.
 Version 1.2.0 This is my first attempt at Multi-Targeting so this application is availaable to .Net Core 3.1 and .Net Standard 2.1.
 
 </PackageReleaseNotes>
-    <AssemblyVersion>1.5.9.0</AssemblyVersion>
+    <AssemblyVersion>1.6.0.0</AssemblyVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>False</IncludeSymbols>
+    <FileVersion>1.6.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
   </ItemGroup>
 
   <ItemGroup>

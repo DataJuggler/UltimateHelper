@@ -3,6 +3,7 @@
 #region using statements
 
 using System;
+using System.Collections.Generic;
 
 #endregion
 
@@ -125,6 +126,90 @@ namespace DataJuggler.UltimateHelper
                 return value;
             }
             #endregion
+
+            #region EnsureInRange(List<int> values, int minValue, int maxValue)
+            /// <summary>
+            /// This method creates a new list, and ensure the members are In Range from the source values
+            /// </summary>
+            public static List<int> EnsureInRange(List<int> values, int minValue, int maxValue)
+            {
+                // initial value
+                List<int> newList = null;
+
+                // If the values collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(values))
+                {
+                    // create a new list
+                    newList = new List<int>();
+
+                    // iterate the list
+                    foreach (int value in values)
+                    {
+                        // Add this value
+                        newList.Add(EnsureInRange(value, minValue, maxValue));
+                    }
+                }
+
+                // return value
+                return newList;
+            }
+            #endregion
+
+            #region EnsureInRange(List<double> values, double minValue, double maxValue)
+            /// <summary>
+            /// This method creates a new list, and ensure the members are In Range from the source values
+            /// </summary>
+            public static List<double> EnsureInRange(List<double> values, double minValue, double maxValue)
+            {
+                // initial value
+                List<double> newList = null;
+
+                // If the values collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(values))
+                {
+                    // create a new list
+                    newList = new List<double>();
+
+                    // iterate the list
+                    foreach (double value in values)
+                    {
+                        // Add this value
+                        newList.Add(EnsureInRange(value, minValue, maxValue));
+                    }
+                }
+
+                // return value
+                return newList;
+            }
+            #endregion
+
+            #region EnsureInRange(List<Decimal> values, Decimal minValue, Decimal maxValue)
+            /// <summary>
+            /// This method creates a new list, and ensure the members are In Range from the source values
+            /// </summary>
+            public static List<Decimal> EnsureInRange(List<Decimal> values, Decimal minValue, Decimal maxValue)
+            {
+                // initial value
+                List<Decimal> newList = null;
+
+                // If the values collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(values))
+                {
+                    // create a new list
+                    newList = new List<Decimal>();
+
+                    // iterate the list
+                    foreach (Decimal value in values)
+                    {
+                        // Add this value
+                        newList.Add(EnsureInRange(value, minValue, maxValue));
+                    }
+                }
+
+                // return value
+                return newList;
+            }
+            #endregion
             
             #region GetNumericValueOfWord(string word)
             /// <summary>
@@ -189,6 +274,183 @@ namespace DataJuggler.UltimateHelper
 
                 // return value
                 return primeNumber;
+            }
+            #endregion
+
+            #region IsInRange(int number, int min, int max)
+            /// <summary>
+            /// This method is used to check a number is greater than or equal to the min
+            /// and less than or equal to the max.
+            /// </summary>
+            /// <param name="number"></param>
+            /// <param name="min"></param>
+            /// <param name="max"></param>
+            /// <returns></returns>
+            public static bool IsInRange(int number, int min, int max)
+            {
+                // set the return value
+                bool isInRange = ((number >= min) && (number <= max));
+
+                // return value
+                return isInRange;
+            }
+            #endregion
+
+            #region IsInRange(double number, double min, double max)
+            /// <summary>
+            /// This method is used to check a number is greater than or equal to the min
+            /// and less than or equal to the max.
+            /// </summary>
+            /// <param name="number"></param>
+            /// <param name="min"></param>
+            /// <param name="max"></param>
+            /// <returns></returns>
+            public static bool IsInRange(double number, double min, double max)
+            {
+                // set the return value
+                bool isInRange = ((number >= min) && (number <= max));
+
+                // return value
+                return isInRange;
+            }
+            #endregion
+
+            #region IsInRange(Decimal number, Decimal min, Decimal max)
+            /// <summary>
+            /// This method is used to check a number is greater than or equal to the min
+            /// and less than or equal to the max.
+            /// </summary>
+            /// <param name="number"></param>
+            /// <param name="min"></param>
+            /// <param name="max"></param>
+            /// <returns></returns>
+            public static bool IsInRange(Decimal number, Decimal min, Decimal max)
+            {
+                // set the return value
+                bool isInRange = ((number >= min) && (number <= max));
+
+                // return value
+                return isInRange;
+            }
+            #endregion
+
+            #region IsInRange(List<int> numbers, int min, int max)
+            /// <summary>
+            /// This method is used to check if a List of numbers is greater than or equal to the min
+            /// and less than or equal to the max.
+            /// </summary>
+            /// <param name="number"></param>
+            /// <param name="min"></param>
+            /// <param name="max"></param>
+            /// <returns></returns>
+            public static bool IsInRange(List<int> numbers, int min, int max)
+            {
+                // set the return value
+                bool isInRange = false;
+                
+                // If the numbers collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(numbers))
+                {
+                    // set to true now
+                    isInRange = true;
+
+                    // Iterate the collection of int objects
+                    foreach (int number in numbers)
+                    {
+                        // if NOT in range
+                        if (!IsInRange(number, min, max))
+                        {
+                            // set to false
+                            isInRange = false;
+
+                            // break out of loop
+                            break;
+                        }
+                    }
+                }
+
+                // return value
+                return isInRange;
+            }
+            #endregion
+
+            #region IsInRange(List<double> numbers, double min, double max)
+            /// <summary>
+            /// This method is used to check if a List of numbers is greater than or equal to the min
+            /// and less than or equal to the max.
+            /// </summary>
+            /// <param name="number"></param>
+            /// <param name="min"></param>
+            /// <param name="max"></param>
+            /// <returns></returns>
+            public static bool IsInRange(List<double> numbers, double min, double max)
+            {
+                // set the return value
+                bool isInRange = false;
+                
+                // If the numbers collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(numbers))
+                {
+                    // set to true now
+                    isInRange = true;
+
+                    // Iterate the collection of double objects
+                    foreach (double number in numbers)
+                    {
+                        // if NOT in range
+                        if (!IsInRange(number, min, max))
+                        {
+                            // set to false
+                            isInRange = false;
+
+                            // break out of loop
+                            break;
+                        }
+                    }
+                }
+
+                // return value
+                return isInRange;
+            }
+            #endregion
+
+            #region IsInRange(List<Decimal> numbers, Decimal min, Decimal max)
+            /// <summary>
+            /// This method is used to check if a List of numbers is greater than or equal to the min
+            /// and less than or equal to the max.
+            /// </summary>
+            /// <param name="number"></param>
+            /// <param name="min"></param>
+            /// <param name="max"></param>
+            /// <returns></returns>
+            public static bool IsInRange(List<Decimal> numbers, Decimal min, Decimal max)
+            {
+                // set the return value
+                bool isInRange = false;
+                
+                // If the numbers collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(numbers))
+                {
+                    // set to true now
+                    isInRange = true;
+
+                    // Iterate the collection of Decimal objects
+                    foreach (Decimal number in numbers)
+                    {
+                        // if NOT in range
+                        if (!IsInRange(number, min, max))
+                        {
+                            // set to false
+                            isInRange = false;
+
+                            // break out of loop
+                            break;
+                        }
+                    }
+                }
+
+                // return value
+                return isInRange;
             }
             #endregion
 
