@@ -10,13 +10,18 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2021</Copyright>
-    <Version>1.6.1</Version>
+    <Version>1.6.3</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
-    <PackageReleaseNotes>Version 1.6.1 - I realized my method FileHelper.CreateFileNameWithPartialGuid had a hard coded number of
+    <PackageReleaseNotes>Version 1.6.3 - I updated FileHelper.CreateFileNameWithPartialGuid method to have a couple of optional
+parameters to set whether includeExtension is true or fileNameOnly.
+
+Version 1.6.2 - I changed FileHelper.CreateFileNameWithPartialGuid method, to have an optional parameter to return the fileName only. 
+
+Version 1.6.1 - I realized my method FileHelper.CreateFileNameWithPartialGuid had a hard coded number of
 characters (bad enough) but also had .png extension hard coded. I am guilty of a specific use method here, sorry.
 It did work for .png's I tested.
 
@@ -83,10 +88,10 @@ I brought over WordParser.cs.
 Version 1.2.0 This is my first attempt at Multi-Targeting so this application is availaable to .Net Core 3.1 and .Net Standard 2.1.
 
 </PackageReleaseNotes>
-    <AssemblyVersion>1.6.1.0</AssemblyVersion>
+    <AssemblyVersion>1.6.3.0</AssemblyVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>False</IncludeSymbols>
-    <FileVersion>1.6.1.0</FileVersion>
+    <FileVersion>1.6.3.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -62,11 +62,11 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region CreateFileNameWithPartialGuid(string sourceFileName, int numberChars)
+            #region CreateFileNameWithPartialGuid(string sourceFileName, int numberChars, bool addExtension = true, bool fileNameOnly = false)
             /// <summary>
             /// This method appends a partial Guid to a filename
             /// </summary>
-            public static string CreateFileNameWithPartialGuid(string sourceFileName, int numberChars)
+            public static string CreateFileNameWithPartialGuid(string sourceFileName, int numberChars, bool addExtension = true, bool fileNameOnly = false)
             {
                 // initial value
                 string newPath = "";
@@ -76,11 +76,8 @@ namespace DataJuggler.UltimateHelper
                     // Get a fileInfo of the oldPath
                     FileInfo fileInfo = new FileInfo(sourceFileName);
 
-                    // Get the index of the period
-                    int index = fileInfo.Name.IndexOf(".");
-
                     // get the name
-                    string name = fileInfo.Name.Substring(0, index);
+                    string name = GetFileNameWithoutExtension(sourceFileName);
 
                     // Get the directory
                     DirectoryInfo directory = fileInfo.Directory;
@@ -89,10 +86,26 @@ namespace DataJuggler.UltimateHelper
                     string fullPath = directory.FullName;
 
                     // newFileName
-                    string newFileName = name + "." + Guid.NewGuid().ToString().Substring(0, numberChars) + fileInfo.Extension;
+                    string newFileName = name + "." + Guid.NewGuid().ToString().Substring(0, numberChars);
+                    
+                    // if addExtension is true
+                    if (addExtension)
+                    {
+                        // put the extension back
+                        newFileName += fileInfo.Extension;
+                    }
 
-                    // Get the newPath
-                    newPath = Path.Combine(fullPath, newFileName);
+                    // if fileNameOnly
+                    if (fileNameOnly)
+                    {
+                        // set the return value to the newFileName
+                        newPath = newFileName;
+                    }
+                    else
+                    {
+                        // Get the new full Path
+                        newPath = Path.Combine(fullPath, newFileName);
+                    }
                 }
 
                 // return value
@@ -100,6 +113,26 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
             
+            #region GetFileNameWithoutExtension(string fullName)
+            /// <summary>
+            /// This method returns the File Name Without Extension
+            /// </summary>
+            public static string GetFileNameWithoutExtension(string fullName)
+            {
+                // initial value
+                string fileNameWithoutExtension = "";
+
+                // Create a fileInfo object
+                FileInfo fileInfo = new FileInfo(fullName);
+
+                // Set the return value
+                fileNameWithoutExtension = fileInfo.Name.Substring(0, fileInfo.Name.LastIndexOf("."));
+
+                // return value
+                return fileNameWithoutExtension;
+            }
+            #endregion
+
             #region GetFileNameWithoutExtensionEx(string fullName, ref string extension)
             /// <summary>
             /// This method returns the File Name Without Extension
