@@ -62,11 +62,11 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region CreateFileNameWithPartialGuid(string sourceFileName)
+            #region CreateFileNameWithPartialGuid(string sourceFileName, int numberChars)
             /// <summary>
             /// This method appends a partial Guid to a filename
             /// </summary>
-            public static string CreateFileNameWithPartialGuid(string sourceFileName)
+            public static string CreateFileNameWithPartialGuid(string sourceFileName, int numberChars)
             {
                 // initial value
                 string newPath = "";
@@ -89,7 +89,7 @@ namespace DataJuggler.UltimateHelper
                     string fullPath = directory.FullName;
 
                     // newFileName
-                    string newFileName = name + "." + Guid.NewGuid().ToString().Substring(0, 12) + ".png";
+                    string newFileName = name + "." + Guid.NewGuid().ToString().Substring(0, numberChars) + fileInfo.Extension;
 
                     // Get the newPath
                     newPath = Path.Combine(fullPath, newFileName);
