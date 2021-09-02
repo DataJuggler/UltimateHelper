@@ -135,7 +135,7 @@ namespace DataJuggler.UltimateHelper
                 return exists;
             }
             #endregion
-
+           
             #region GetFileNameWithoutExtension(string fullName)
             /// <summary>
             /// This method returns the File Name Without Extension
@@ -148,8 +148,17 @@ namespace DataJuggler.UltimateHelper
                 // Create a fileInfo object
                 FileInfo fileInfo = new FileInfo(fullName);
 
-                // Set the return value
-                fileNameWithoutExtension = fileInfo.Name.Substring(0, fileInfo.Name.LastIndexOf("."));
+                // if the extension exists
+                if (TextHelper.Exists(fileInfo.Extension))
+                {
+                    // Remove the extension
+                    fileNameWithoutExtension = fileInfo.Name.Replace(fileInfo.Extension, "");
+                }
+                else
+                {
+                    // There is not an extension
+                    fileNameWithoutExtension = fileInfo.Name;
+                }
 
                 // return value
                 return fileNameWithoutExtension;
@@ -165,33 +174,23 @@ namespace DataJuggler.UltimateHelper
                 // initial value
                 string fileNameWithoutExtension = "";
 
-                // local
-                int index = -1;
+                // Create a fileInfo object
+                FileInfo fileInfo = new FileInfo(fullName);
 
-                // If the fullName string exists
-                if (TextHelper.Exists(fullName))
+                 // if the extension exists
+                if (TextHelper.Exists(fileInfo.Extension))
                 {
-                    // Create a fileInfo object
-                    FileInfo fileInfo = new FileInfo(fullName);
-
-                    // set the index
-                    index = fileInfo.Name.LastIndexOf(".");
-
-                    // if the index was found and not the first character
-                    if (index > 0)
-                    {
-                        // Set the return value
-                        fileNameWithoutExtension = fileInfo.Name.Substring(0, index);
-                    }
-                    else
-                    {
-                        // Set the return value to the name (if it is possible for a filie to not have an extension?)
-                        fileNameWithoutExtension = fileInfo.Name;
-                    }
-
-                    // set the extension
-                    extension = fileInfo.Extension;
+                    // Remove the extension
+                    fileNameWithoutExtension = fileInfo.Name.Replace(fileInfo.Extension, "");
                 }
+                else
+                {
+                    // There is not an extension
+                    fileNameWithoutExtension = fileInfo.Name;
+                }
+
+                // set the extension
+                extension = fileInfo.Extension;
 
                 // return value
                 return fileNameWithoutExtension;
