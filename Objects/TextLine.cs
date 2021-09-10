@@ -2,6 +2,7 @@
 
 #region using statements
 
+using System;
 using System.Collections.Generic;
 
 #endregion
@@ -63,6 +64,74 @@ namespace DataJuggler.UltimateHelper.Objects
         #endregion
       
         #region Properties
+
+            #region ContainsPartialComment
+            /// <summary>
+            /// This read only property returns the value for 'ContainsPartialComment'.
+            /// </summary>
+            public bool ContainsPartialComment
+            {
+                get
+                {
+                    // initial value
+                    bool containsPartialComment = false;
+                    
+                    // A line cannot be a comment and a partial comment. It's one or the other, or not for both.
+                    if ((HasText) && (!IsComment))
+                    {
+                        // set the return value
+                        containsPartialComment = this.Text.Contains("//");
+                    }
+                    
+                    // return value
+                    return containsPartialComment;
+                }
+            }
+            #endregion
+            
+            #region HasText
+            /// <summary>
+            /// This property returns true if the 'Text' exists.
+            /// </summary>
+            public bool HasText
+            {
+                get
+                {
+                    // initial value
+                    bool hasText = !String.IsNullOrEmpty(this.Text);
+                    
+                    // return value
+                    return hasText;
+                }
+            }
+            #endregion
+            
+            #region IsComment
+            /// <summary>
+            /// This read only property returns true, if the first text in this line is a C# comment '//'.
+            /// Comments that appear later in the line are not counted in this method, use ContainsComment
+            /// to check if a line contains any comment, and UncommentedText to get the text before
+            /// a comment. If there is not a comment, UncommentedText returns the same as Text.
+            /// </summary>
+            public bool IsComment
+            {
+                get
+                {
+                    // initial value
+                    bool isComment = false;
+                    
+                    // if the value for HasText is true
+                    if (HasText)
+                    {
+                        // if hasText is true
+                        isComment = this.Text.Trim().StartsWith("//");
+                    }
+                    
+                    // return value
+                    return isComment;
+                }
+            }
+            #endregion
             
             #region LineNumber
             /// <summary>
@@ -72,6 +141,67 @@ namespace DataJuggler.UltimateHelper.Objects
             {
                 get { return lineNumber; }
                 set { lineNumber = value; }
+            }
+            #endregion
+
+            #region PartialCommentCode
+            /// <summary>
+            /// This read only property returns the value for 'PartialCommentCode'.
+            /// The PartialCommentCode is the code before the comment in a line
+            /// that contains a partial comment.
+            /// </summary>
+            public string PartialCommentCode
+            {
+                get
+                {
+                    // initial value
+                    string partialCommentCode = "";
+
+                    // if this line contains a partial comment
+                    if (ContainsPartialComment)
+                    {
+                        // get the index of the comment
+                        int index = Text.IndexOf("//");
+
+                        // Set the return value
+                        partialCommentCode = Text.Substring(0, index);
+
+                        // just in case the comment lines are here, remove it.
+                        partialCommentCode = partialCommentCode.Replace("//", "");
+                    }
+                    
+                    // return value
+                    return partialCommentCode;
+                }
+            }
+            #endregion
+            
+            #region PartialCommentText
+            /// <summary>
+            /// This read only property returns the value for 'PartialCommentText'.
+            /// The PartialCommentText is the text that is commented out, in a line
+            /// that contains a PartialComment. Does not take into account block comments such as /* */
+            /// </summary>
+            public string PartialCommentText
+            {
+                get
+                {
+                    // initial value
+                    string partialCommentText = "";
+
+                    // if this line contains a partial comment
+                    if (ContainsPartialComment)
+                    {
+                        // get the index of the comment
+                        int index = Text.IndexOf("//");
+
+                        // Set the return value
+                        partialCommentText = Text.Substring(index).Replace("//", "").Trim();
+                    }
+                    
+                    // return value
+                    return partialCommentText;
+                }
             }
             #endregion
             
