@@ -35,8 +35,43 @@ namespace DataJuggler.UltimateHelper
                     // if the string exists
                     if (TextHelper.Exists(sourceString))
                     {
-                        // perform the parse
-                        boolValue = Boolean.Parse(sourceString);
+                        if (TextHelper.IsEqual(sourceString, "1"))
+                        {   
+                            // one is true
+                            boolValue = true;
+                        }
+                        else if (TextHelper.IsEqual(sourceString, "0"))
+                        {
+                            // zero is false
+                            boolValue = true;
+                        }
+                        else if (TextHelper.IsEqual(sourceString.ToLower(), "true"))
+                        {
+                            // true
+                            boolValue = true;
+                        }
+                        else if (TextHelper.IsEqual(sourceString.ToLower(), "false"))
+                        {
+                            // false
+                            boolValue = true;
+                        }
+                        else
+                        {
+                            // parse as an int
+                            int value = NumericHelper.ParseInteger(sourceString, 0, 0);
+
+                            // if value is not equal to zero
+                            if (value != 0)
+                            {
+                                // any non zero is a true
+                                boolValue = true;
+                            }
+                            else
+                            {
+                                // perform the parse
+                                boolValue = Boolean.Parse(sourceString);        
+                            }
+                        }
                     }
                 }
                 catch (Exception error)
