@@ -43,7 +43,7 @@ namespace DataJuggler.UltimateHelper
                         else if (TextHelper.IsEqual(sourceString, "0"))
                         {
                             // zero is false
-                            boolValue = true;
+                            boolValue = false;
                         }
                         else if (TextHelper.IsEqual(sourceString.ToLower(), "true"))
                         {
@@ -53,7 +53,7 @@ namespace DataJuggler.UltimateHelper
                         else if (TextHelper.IsEqual(sourceString.ToLower(), "false"))
                         {
                             // false
-                            boolValue = true;
+                            boolValue = false;
                         }
                         else
                         {
