@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;</TargetFrameworks>
+    <TargetFrameworks>net6.0;</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>Data Juggler</Company>
     <Authors>Data Juggler</Authors>
-    <Description>This is a port of DataJuggler.UltimateHelper.Net that was ported to
+    <Description>DataJuggler.UltimateHelper is a collection of C# classes to simplify many things.
+
+This is a port of DataJuggler.UltimateHelper.Net that was ported to
 DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
@@ -17,6 +19,8 @@ I am dropping Core from all my packages.
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
     <PackageReleaseNotes>
+		Version 6.0.0: This version is for 6.0.
+		
 		Version 1.7.1: I updated Nuget Packages for this release, and System.Configuration was updated recently, so I
 		updated.
 		
