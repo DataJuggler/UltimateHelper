@@ -91,6 +91,20 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
+            #region Exists(object item, object item2, object item3, object item4, object item5, object item6)
+            /// <summary>
+            /// This method returns true if all six objects exist.
+            /// </summary>
+            public static bool Exists(object item, object item2, object item3, object item4, object item5, object item6)
+            {
+                // initial value
+                bool exists = ((item != null) && (item2 != null) && (item3 != null) && (item4 != null) && (item5 != null) && (item6 != null));
+
+                // return value
+                return exists;
+            }
+            #endregion
+
             #region IsNull(object item)
             /// <summary>
             /// This method returns true if the item does not exist
@@ -155,6 +169,20 @@ namespace DataJuggler.UltimateHelper
             {
                 // initial value
                 bool isNull = ((item == null) || (item2 == null) || (item3 == null) || (item4 == null) || (item5 == null));
+
+                // return value
+                return isNull;
+            }
+            #endregion
+
+            #region IsNull(object item, object item2, object item3, object item4, object item5, object item6)
+            /// <summary>
+            /// This method returns true if any of the six items Do Not Exist.
+            /// </summary>
+            public static bool IsNull(object item, object item2, object item3, object item4, object item5, object item6)
+            {
+                // initial value
+                bool isNull = ((item == null) || (item2 == null) || (item3 == null) || (item4 == null) || (item5 == null) || (item6 == null));
 
                 // return value
                 return isNull;
