@@ -119,6 +119,20 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
+            #region Exists(object item, object item2, object item3, object item4, object item5, object item6, object item7, object item8)
+            /// <summary>
+            /// This method returns true if all eight objects exist.
+            /// </summary>
+            public static bool Exists(object item, object item2, object item3, object item4, object item5, object item6, object item7, object item8)
+            {
+                // initial value
+                bool exists = ((item != null) && (item2 != null) && (item3 != null) && (item4 != null) && (item5 != null) && (item6 != null) && (item7 != null)  && (item8 != null));
+
+                // return value
+                return exists;
+            }
+            #endregion
+
             #region IsNull(object item)
             /// <summary>
             /// This method returns true if the item does not exist
@@ -211,6 +225,20 @@ namespace DataJuggler.UltimateHelper
             {
                 // initial value
                 bool isNull = ((item == null) || (item2 == null) || (item3 == null) || (item4 == null) || (item5 == null) || (item6 == null)  || (item7 == null));
+
+                // return value
+                return isNull;
+            }
+            #endregion
+
+            #region IsNull(object item, object item2, object item3, object item4, object item5, object item6, object item7, object item8)
+            /// <summary>
+            /// This method returns true if any of the eight items Do Not Exist.
+            /// </summary>
+            public static bool IsNull(object item, object item2, object item3, object item4, object item5, object item6, object item7, object item8)
+            {
+                // initial value
+                bool isNull = ((item == null) || (item2 == null) || (item3 == null) || (item4 == null) || (item5 == null) || (item6 == null) || (item7 == null) || (item8 == null));
 
                 // return value
                 return isNull;
