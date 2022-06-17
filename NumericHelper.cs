@@ -572,6 +572,9 @@ namespace DataJuggler.UltimateHelper
                     // if the sourceString exists
                     if (!String.IsNullOrEmpty(sourceString))
                     {
+                        // remove the dollar sign
+                        sourceString = sourceString.Replace("$", "");
+
                         // perform the parse
                         returnDecimal = Convert.ToDecimal(sourceString);
                     }
@@ -604,6 +607,9 @@ namespace DataJuggler.UltimateHelper
                     // if the sourceString exists
                     if (!String.IsNullOrEmpty(sourceString))
                     {
+                        // remove the dollar sign
+                        sourceString = sourceString.Replace("$", "");
+
                         // perform the parse
                         returnDouble = Convert.ToDouble(sourceString);
                     }
@@ -636,6 +642,9 @@ namespace DataJuggler.UltimateHelper
                     // if the sourceString exists
                     if (!String.IsNullOrEmpty(sourceString))
                     {
+                        // remove the dollar sign
+                        sourceString = sourceString.Replace("$", "");
+
                         // perform the parse
                         returnInt = Convert.ToInt32(sourceString);
                     }
