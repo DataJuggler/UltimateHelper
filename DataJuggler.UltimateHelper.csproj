@@ -1,38 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFramework>net6.0</TargetFramework>
+	  <TargetFramework>net7.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>Data Juggler</Company>
     <Authors>Data Juggler</Authors>
     <Description>DataJuggler.UltimateHelper is a collection of C# classes to simplify many things.
+
+This version has been upgraded for .NET7. Use a 6.xx version for .NET 6.
 
 This is a port of DataJuggler.UltimateHelper.Net that was ported to
 DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2022</Copyright>
-    <Version>6.0.6</Version>
+    <Version>7.0.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
-    <PackageReleaseNotes>
-		5.4.2022
-		Version 6.0.5: Last and final override for NullHelper.IsNull and Exists methods. 
+    <PackageReleaseNotes>10.19.2022: First release for .NET 7. The only reason this version has a -rc is so it doesn't show up
+in Nuget package feeds until .NET 7 is released next month.
+
+5.4.2022
+Version 6.0.5: Last and final override for NullHelper.IsNull and Exists methods. 
 		
-		5.3.2022
-		Version 6.0.4: I added a couple of overrides for IsNull and Exists methods for NullHelper.cs
+5.3.2022
+Version 6.0.4: I added a couple of overrides for IsNull and Exists methods for NullHelper.cs
 		
-		Version 6.0.0: This version is for 6.0.
+Version 6.0.0: This version is for 6.0.
 		
-		Version 1.7.1: I updated Nuget Packages for this release, and System.Configuration was updated recently, so I
-		updated.
+Version 1.7.1: I updated Nuget Packages for this release, and System.Configuration was updated recently, so I
+updated.
 		
-		Version 1.7.0: I updated the package to multi-target .Net5.0 and .Net6.0
+Version 1.7.0: I updated the package to multi-target .Net5.0 and .Net6.0
 		
-		Version 1.6.9: Boolean Helper Upgrade described below had some flaws. Hopefully fixed now.
+Version 1.6.9: Boolean Helper Upgrade described below had some flaws. Hopefully fixed now.
 
 Version 1.6.8 - After 11 years, BooleanHelper got an upgrade.
 
@@ -131,7 +135,7 @@ Version 1.2.0 This is my first attempt at Multi-Targeting so this application is
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
