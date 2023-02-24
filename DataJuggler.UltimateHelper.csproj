@@ -14,13 +14,15 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2022</Copyright>
-    <Version>7.0.0</Version>
+    <Version>7.1.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
-    <PackageReleaseNotes>10.19.2022: First release for .NET 7. The only reason this version has a -rc is so it doesn't show up
+    <PackageReleaseNotes>2.23.2023: I added a new CodeHelper to help with formatting code (C# code for now).
+
+10.19.2022: First release for .NET 7. The only reason this version has a -rc is so it doesn't show up
 in Nuget package feeds until .NET 7 is released next month.
 
 5.4.2022
@@ -134,6 +136,14 @@ Version 1.2.0 This is my first attempt at Multi-Targeting so this application is
     <WarningLevel>5</WarningLevel>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;IDE0090;IDE0059;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;IDE0090;IDE0059;</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
@@ -147,6 +157,7 @@ Version 1.2.0 This is my first attempt at Multi-Targeting so this application is
 
   <ItemGroup>
     <Folder Include="Delegates\" />
+    <Folder Include="Enumerations\" />
   </ItemGroup>
 
 </Project>
