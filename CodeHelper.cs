@@ -47,6 +47,17 @@ public class CodeHelper
             // If the codeText string exists
             if (TextHelper.Exists(codeText))
             {
+                // if the NewLine is not found
+                if (!codeText.Contains(Environment.NewLine))
+                {
+                    // The parsing on lines isn't working, this is a good hack till
+                    // I rewrite the parser to be more robust someday
+                    codeText = codeText.Replace("\n", Environment.NewLine);
+                }
+
+                // just in case, fix for the hack
+                codeText = codeText.Replace("\r\r", "\r");
+
                 // Get the textLines
                 List<TextLine> lines = TextHelper.GetTextLines(codeText);
 

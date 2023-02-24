@@ -14,13 +14,14 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2022</Copyright>
-    <Version>7.1.0</Version>
+    <Version>7.1.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
     <PackageReleaseNotes>2.23.2023: I added a new CodeHelper to help with formatting code (C# code for now).
+Version 7.1.1 Fixes an issue where in a web project, new lines are not added, only \n.
 
 10.19.2022: First release for .NET 7. The only reason this version has a -rc is so it doesn't show up
 in Nuget package feeds until .NET 7 is released next month.
