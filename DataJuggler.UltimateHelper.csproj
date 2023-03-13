@@ -14,13 +14,17 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2022</Copyright>
-    <Version>7.1.1</Version>
+    <Version>7.1.2</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
-    <PackageReleaseNotes>2.23.2023: I added a new CodeHelper to help with formatting code (C# code for now).
+    <PackageReleaseNotes>3.13.2023: I added System.Configuration Nuget package. I thought this was already present, but wasn't.
+I also updated EnvironmentVariableHelper to have a Set method and now the GetEnvironmentVariable
+and SetEnvironmentVariable now have a target parameter (Machine, User or Process).
+
+2.23.2023: I added a new CodeHelper to help with formatting code (C# code for now).
 Version 7.1.1 Fixes an issue where in a web project, new lines are not added, only \n.
 
 10.19.2022: First release for .NET 7. The only reason this version has a -rc is so it doesn't show up
@@ -146,7 +150,9 @@ Version 1.2.0 This is my first attempt at Multi-Targeting so this application is
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <Compile Remove="Delegates\**" />
+    <EmbeddedResource Remove="Delegates\**" />
+    <None Remove="Delegates\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -157,8 +163,11 @@ Version 1.2.0 This is my first attempt at Multi-Targeting so this application is
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Delegates\" />
     <Folder Include="Enumerations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
