@@ -447,6 +447,37 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
+            #region RemovePartialGuid(string fileNameWithPartialGuid)
+            /// <summary>
+            /// returns the Partial Guid
+            /// </summary>
+            /// <param name="fileNameWithPartialGuid">The file name with a partial guid such as Banana.853edcd1-216.jpg</param>
+            public string RemovePartialGuid(string fileNameWithPartialGuid)
+            {
+                // initial value
+                string fileName = "";
+
+                // If the fileNameWithPartialGuid string exists
+                if (TextHelper.Exists(fileNameWithPartialGuid))
+                {
+                    // get the index of the first dot
+                    int index = fileNameWithPartialGuid.IndexOf(".");
+
+                    // get the root name before the first dot
+                    string subString = fileNameWithPartialGuid.Substring(0, index);
+
+                    // Create a fileInfo object
+                    FileInfo fileInfo = new FileInfo(fileNameWithPartialGuid);
+
+                    // Set the return value
+                    fileName = subString + fileInfo.Extension;
+                }
+                
+                // return value
+                return fileName;
+            }
+            #endregion
+            
         #endregion
 
     }

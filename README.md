@@ -1,10 +1,101 @@
 # UltimateHelper
 This library is a collection of helper classes that make working with C# much easier.
 
-This package was originally for .Net Framework, then ported to .Net Core, and now just .Net 5.0.
+This package was originally for .Net Framework, then ported to .Net Core, and now .NET 7.
 
-I thought I had this library documented, but apparenty now. I will work on this someday.
+# Working Exmpales - Opensource Projects Using This Project
 
+# Blazor Gallery
+Blazor Gallery is a complete C# / SQL Server image portfolio site
 
+Live Site
+https://blazorgallery.com
+
+Code:
+https://github.com/DataJuggler/BlazorGallery
+
+Video:
+
+Is There 1 Brave C# Programmer In The World? 
+https://youtu.be/HAMgeaCuvHY
+
+6.21.2023: This project has not received a star yet.
+
+# Blazor Excelerate
+
+Code Generate C# Classes From Excel Header Rows
+
+Live Site
+https://excelerate.datajuggler.com
+
+Code:
+https://github.com/DataJuggler/Blazor.Excelerate
+
+Blazor Excelerate uses Nuget package DataJuggler.Excelerate, which allows you to load and 
+save entire worksheets and workbooks with a few lines of code. 
+
+List of classes:
+
+# BooleanHelper
+Parses booleans and allows you set to a default value.
+
+# CodeHelper
+Used in formatting code. An example of this is in the live site https://codopy.com,
+which is an opensource project here: https://github.com/DataJuggler/Codopy
+Format C# Code From Visual Studio when pasting to Git Hub read me files, or the social media.
+
+# CodeLine
+
+A code line is a line of C# code. This class is used in conjunction with TextLine.cs and CodeHelper.cs
+
+# ConfigurationHelper
+
+This class reads app settings from an app.config or web.config. This was created for .NET Framework, but still works.
+
+# DateHelper
+
+This class has methods to help parse dates safely.
+
+# EnumHelper
+
+This class make it easier to parse and iterate enumerations.
+
+# EnvironmentVariableHelper
+
+This class makes it simple to get and set values for System, User or Process Environment Variables.
+
+# FileHelper
+
+This class has many method that help with dealing with files, such as get all files recursively
+from a folder, create a file name with a partial guid to ensure uniqueness in a folder and more.
+
+# ListHelper
+
+This class is a must for anyone who deals with Lists or List<T>. 
+My two favorite methods are HasOneOrMoreItems and HasXOrMoreItems.
+
+# NullHelper
+
+Check if multiple objects at once with NullHelper.Exists(object1, object2, object3, object4, object5);
+
+# NumericHelper
+
+This class started as a way to parse int's, double's and decimal's, however it has evolved since
+and has many helpful methods such as EnsureInRange and IsInRange and more.
+
+# TextHelper
+
+This is one of my favorite classes. TextHelper.Exists(string1, string2, string3, string4) is much 
+easier to write than if ((!String.IsNullOrEmpty(string1)) && ((!String.IsNullOrEmpty(string2)) &&
+(!String.IsNullOrEmpty(string3)) && (!String.IsNullOrEmpty(string4))). Also there are methods
+such as CapitalizeFirstChar, GetTextLines, GetWords, StartsWithVowel, and more.
+
+# XmlPatternHelper
+
+This class is used to encode and decode xml text if the
+file contains ampersands (&) or greater than or less than signs.
+
+This class is used by Regionizer and Regionizer2022 Visual Studio Extensions, where the
+custom comment dictionary has to be able to save < > and &'s in Xml.
 
 

@@ -15,7 +15,7 @@ namespace DataJuggler.UltimateHelper
 
     #region class DateHelper
     /// <summary>
-    /// This class has methods to help parse date safely.
+    /// This class has methods to help parse dates safely.
     /// </summary>
     public class DateHelper
     {
