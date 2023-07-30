@@ -501,39 +501,54 @@ namespace DataJuggler.UltimateHelper
             /// <param name="sourceText"></param>
             /// <returns></returns>
             public static List<TextLine> GetTextLines(string sourceText)
-            {
+            {  
                 // initial value
                 List<TextLine> textLines = new List<TextLine>();
 
-                // typical delimiter characters
-                char[] delimiterChars = Environment.NewLine.ToCharArray();
-
-                // local
-                int counter = -1;
-
-                // verify the sourceText exists
-                if (!String.IsNullOrEmpty(sourceText))
+                // If the value for the property Exists.sourceText is true
+                if (Exists(sourceText))
                 {
-                    // Get the list of strings
-                    string[] linesOfText = sourceText.Split(delimiterChars);
-
-                    // now iterate the strings
-                    foreach (string lineOfText in linesOfText)
+                    // if the NewLine is not found
+                    if (!sourceText.Contains(Environment.NewLine))
                     {
-                        // local
-                        string text = lineOfText;
+                        // The parsing on lines isn't working, this is a good hack till
+                        // I rewrite the parser to be more robust someday
+                        sourceText = sourceText.Replace("\n", Environment.NewLine);
+                    }
 
-                        // increment the counter
-                        counter++;
+                    // just in case, fix for the hack
+                    sourceText = sourceText.Replace("\r\r", "\r");
 
-                        // add every other row
-                        if ((counter % 2) == 0)
+                    // typical delimiter characters
+                    char[] delimiterChars = Environment.NewLine.ToCharArray();
+
+                    // local
+                    int counter = -1;
+
+                    // verify the sourceText exists
+                    if (!String.IsNullOrEmpty(sourceText))
+                    {
+                        // Get the list of strings
+                        string[] linesOfText = sourceText.Split(delimiterChars);
+
+                        // now iterate the strings
+                        foreach (string lineOfText in linesOfText)
                         {
-                            // Create a new TextLine
-                            TextLine textLine = new TextLine(text);
+                            // local
+                            string text = lineOfText;
 
-                            // now add this textLine to textLines collection
-                            textLines.Add(textLine);
+                            // increment the counter
+                            counter++;
+
+                            // add every other row
+                            if ((counter % 2) == 0)
+                            {
+                                // Create a new TextLine
+                                TextLine textLine = new TextLine(text);
+
+                                // now add this textLine to textLines collection
+                                textLines.Add(textLine);
+                            }
                         }
                     }
                 }
