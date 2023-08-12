@@ -659,6 +659,66 @@ namespace DataJuggler.UltimateHelper
                 return returnValue;
             }
             #endregion
+
+            #region ParseEightDigitDate(string dateText)
+            /// <summary>
+            /// returns the Date from a format yyyymmdd.
+            /// </summary>
+            public DateTime ParseEightDigitDate(string dateText)
+            {
+                // initial value
+                DateTime date = new DateTime(1900, 1, 1);
+
+                // locals
+                string yearText = "";
+                string monthText = "";
+                string dayText = "";
+                int year = 0;
+                int month = 0;
+                int day = 0;
+
+                // If the dateText string exists
+                if ((TextHelper.Exists(dateText)) && (dateText.Length == 8))
+                {
+                    // set the yearText
+                    yearText = dateText.Substring(0, 4);
+
+                    // set the monthText
+                    monthText = dateText.Substring(4, 2);
+
+                    // if the month starts with a 0
+                    if (monthText.StartsWith("0"))
+                    {
+                        // trim off the first 0
+                        monthText = monthText.Substring(1);
+                    }
+
+                    // set the dayText
+                    dayText = dateText.Substring(6, 2);
+
+                    // if the day starts with a 0
+                    if (dayText.StartsWith("0"))
+                    {
+                        // trim off the first 0
+                        dayText = dayText.Substring(1);
+                    }
+
+                    // set the year
+                    year = NumericHelper.ParseInteger(yearText, 0, -1);
+                    month = NumericHelper.ParseInteger(monthText, 0, -1);
+                    day = NumericHelper.ParseInteger(dayText, 0, -1);
+
+                    if ((year > 0) && (month > 0) && (day > 0))
+                    {
+                        // Set the date
+                        date = new DateTime(year, month, day);
+                    }
+                }
+    
+                // return value
+                return date;
+            }
+            #endregion
             
         #endregion
             

@@ -14,124 +14,127 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2022</Copyright>
-    <Version>7.1.4</Version>
+    <Version>7.1.5</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
     <PackageReleaseNotes>
+		8:11.2023 - Added a new method to DateHelper - ParseEightDigitDate.
+		Parses a date in the fromat yyyymmdd.
+
 		6.21.2023: I added FileHelper.RemovePartialGuid method, and I updated the ReadMe file
 		with some sample projects that use this project. I also realized the ReadMe was not being packed
 		with the package and have now fixed this.
-		
+
 		3.13.2023: I added System.Configuration Nuget package. I thought this was already present, but wasn't.
-I also updated EnvironmentVariableHelper to have a Set method and now the GetEnvironmentVariable
-and SetEnvironmentVariable now have a target parameter (Machine, User or Process).
+		I also updated EnvironmentVariableHelper to have a Set method and now the GetEnvironmentVariable
+		and SetEnvironmentVariable now have a target parameter (Machine, User or Process).
 
-2.23.2023: I added a new CodeHelper to help with formatting code (C# code for now).
-Version 7.1.1 Fixes an issue where in a web project, new lines are not added, only \n.
+		2.23.2023: I added a new CodeHelper to help with formatting code (C# code for now).
+		Version 7.1.1 Fixes an issue where in a web project, new lines are not added, only \n.
 
-10.19.2022: First release for .NET 7. The only reason this version has a -rc is so it doesn't show up
-in Nuget package feeds until .NET 7 is released next month.
+		10.19.2022: First release for .NET 7. The only reason this version has a -rc is so it doesn't show up
+		in Nuget package feeds until .NET 7 is released next month.
 
-5.4.2022
-Version 6.0.5: Last and final override for NullHelper.IsNull and Exists methods. 
-		
-5.3.2022
-Version 6.0.4: I added a couple of overrides for IsNull and Exists methods for NullHelper.cs
-		
-Version 6.0.0: This version is for 6.0.
-		
-Version 1.7.1: I updated Nuget Packages for this release, and System.Configuration was updated recently, so I
-updated.
-		
-Version 1.7.0: I updated the package to multi-target .Net5.0 and .Net6.0
-		
-Version 1.6.9: Boolean Helper Upgrade described below had some flaws. Hopefully fixed now.
+		5.4.2022
+		Version 6.0.5: Last and final override for NullHelper.IsNull and Exists methods.
 
-Version 1.6.8 - After 11 years, BooleanHelper got an upgrade.
+		5.3.2022
+		Version 6.0.4: I added a couple of overrides for IsNull and Exists methods for NullHelper.cs
 
-Version 1.6.7 - I added a couple of read only properties for IsComment, IsPartialComment, PartialCommentText, PartialCommentCode.
+		Version 6.0.0: This version is for 6.0.
 
-Version 1.6.6 - I added a GetWordsAsStrings, because sometimes you just need a list of strings.
+		Version 1.7.1: I updated Nuget Packages for this release, and System.Configuration was updated recently, so I
+		updated.
 
-Version 1.6.5 - After years of writing this, I found a safer way of getting the FileNameWithoutExtension. My previous method failed if a fileName passed in doesn't have an extension.
+		Version 1.7.0: I updated the package to multi-target .Net5.0 and .Net6.0
 
-Version 1.6.4 - I added a new method FileHelper.Exists. System.IO.File.Exists will return true if you pass in an empty string. My version will return true only if the string exists and the File exists on disk.
+		Version 1.6.9: Boolean Helper Upgrade described below had some flaws. Hopefully fixed now.
 
-Version 1.6.3 - I updated FileHelper.CreateFileNameWithPartialGuid method to have a couple of optional
-parameters to set whether includeExtension is true or fileNameOnly.
+		Version 1.6.8 - After 11 years, BooleanHelper got an upgrade.
 
-Version 1.6.2 - I changed FileHelper.CreateFileNameWithPartialGuid method, to have an optional parameter to return the fileName only. 
+		Version 1.6.7 - I added a couple of read only properties for IsComment, IsPartialComment, PartialCommentText, PartialCommentCode.
 
-Version 1.6.1 - I realized my method FileHelper.CreateFileNameWithPartialGuid had a hard coded number of
-characters (bad enough) but also had .png extension hard coded. I am guilty of a specific use method here, sorry.
-It did work for .png's I tested.
+		Version 1.6.6 - I added a GetWordsAsStrings, because sometimes you just need a list of strings.
 
-Version 1.6.0 - I removed SQLParameterHelper, which had a dependency on System.Data.SQLClient.
-I moved SQLParameterHelper to its own project DataJuggler.UltimateHelper.SQL
-I also added another override for the CheckInRange and the EnsureInRange to NumericHelper, where
-you can now pass in a list of integers, doubles or decimals to work with sets of numbers.
+		Version 1.6.5 - After years of writing this, I found a safer way of getting the FileNameWithoutExtension. My previous method failed if a fileName passed in doesn't have an extension.
 
-Version 1.5.12 - I added a new method IsInRange to NumericHelper.
+		Version 1.6.4 - I added a new method FileHelper.Exists. System.IO.File.Exists will return true if you pass in an empty string. My version will return true only if the string exists and the File exists on disk.
 
-Version 1.5.11 - I added a new method EnsureInRange to NumericHelper.
+		Version 1.6.3 - I updated FileHelper.CreateFileNameWithPartialGuid method to have a couple of optional
+		parameters to set whether includeExtension is true or fileNameOnly.
 
-Version 1.5.8 - I added a couple of methods to DateHelper to get the month names and GetDateShortText
+		Version 1.6.2 - I changed FileHelper.CreateFileNameWithPartialGuid method, to have an optional parameter to return the fileName only.
 
-Version 1.5.7 - Oops. I forgot to make the new ExportTextLines static.
+		Version 1.6.1 - I realized my method FileHelper.CreateFileNameWithPartialGuid had a hard coded number of
+		characters (bad enough) but also had .png extension hard coded. I am guilty of a specific use method here, sorry.
+		It did work for .png's I tested.
 
-Version 1.5.6 - I did two things. One I got rid of WordParser, even though it breaks many of my own apps.
-TextHelper has the exact two methods for GetTextLines and GetWords.
-The other thing I added was a new method called ExportTextLines, to make it easy to reassemble a List of
-TextLines back into a File or block.
+		Version 1.6.0 - I removed SQLParameterHelper, which had a dependency on System.Data.SQLClient.
+		I moved SQLParameterHelper to its own project DataJuggler.UltimateHelper.SQL
+		I also added another override for the CheckInRange and the EnsureInRange to NumericHelper, where
+		you can now pass in a list of integers, doubles or decimals to work with sets of numbers.
 
-Version 1.5.5 - I had been working on a method in the Word Parser, and I had to make a change to parse some text that didn't end in new line characters. I fixed and checked it right back in, so hopefully
-no one downloaded this package in the last 5 minutes.
+		Version 1.5.12 - I added a new method IsInRange to NumericHelper.
 
-Version 1.5.4 - Remove the code that create the symbols package, as someone updated the project with 
-it and I didn't ask for it and it didn't work to allow you to step through the code.
+		Version 1.5.11 - I added a new method EnsureInRange to NumericHelper.
 
-Download the code from Git Hub if you need to debug.
+		Version 1.5.8 - I added a couple of methods to DateHelper to get the month names and GetDateShortText
 
-Version 1.5.3 - I am trying to be somewhat consistent, and the 5 stand for .Net 5.
+		Version 1.5.7 - Oops. I forgot to make the new ExportTextLines static.
 
-Version 1.5.1 - I am trying to be somewhat consistent, and the 5 stand for .Net 5.
+		Version 1.5.6 - I did two things. One I got rid of WordParser, even though it breaks many of my own apps.
+		TextHelper has the exact two methods for GetTextLines and GetWords.
+		The other thing I added was a new method called ExportTextLines, to make it easy to reassemble a List of
+		TextLines back into a File or block.
 
-Version 1.3.1 - I realized I had forgotten to drop the .Core.
+		Version 1.5.5 - I had been working on a method in the Word Parser, and I had to make a change to parse some text that didn't end in new line characters. I fixed and checked it right back in, so hopefully
+		no one downloaded this package in the last 5 minutes.
 
-The new namespace is just DataJuggler.UltimateHelper (no .Net or .Core Yay!).
+		Version 1.5.4 - Remove the code that create the symbols package, as someone updated the project with
+		it and I didn't ask for it and it didn't work to allow you to step through the code.
 
-Version 1.5.3 - Brought over EnumHelper from .Net Framework version now that I am converting DB Compare
-to .Net 5, I needed this.
+		Download the code from Git Hub if you need to debug.
 
-Version 1.5.0 - .Net 5 Port.
+		Version 1.5.3 - I am trying to be somewhat consistent, and the 5 stand for .Net 5.
 
-Version 1.3.0 - Converted to .Net 5.0 and dropped the .Core name.
+		Version 1.5.1 - I am trying to be somewhat consistent, and the 5 stand for .Net 5.
 
-Version 1.2.6 - Not sure if a publish was needed for this, but the project file now has Source Link enabled, so source stepping should be possible.
+		Version 1.3.1 - I realized I had forgotten to drop the .Core.
 
-Version 1.2.5 - I changed NumericHelper.IsNumeric to include 3 new optional parameters.
-bool RemoveDash, true by default. - numbers are removed for this test.
-double defaultValue, -2,000,000 default value.
-double errorValue, -2,000,001 default value.
+		The new namespace is just DataJuggler.UltimateHelper (no .Net or .Core Yay!).
 
-If the number parses to greater than, it is numeric.
-My old way didn't work for negative numbers, and I need them now.
+		Version 1.5.3 - Brought over EnumHelper from .Net Framework version now that I am converting DB Compare
+		to .Net 5, I needed this.
 
-Version 1.2.4 - I added a 5th parameter override to NullHelper.Exists and NullHelper.IsNull
+		Version 1.5.0 - .Net 5 Port.
 
-Version 1.2.3 - I accidently had LastIndexOf instead of Index of when I created a new file name in CreateFileNameWithPartialGuid method.
+		Version 1.3.0 - Converted to .Net 5.0 and dropped the .Core name.
 
-Version 1.2.2 - I added a new method to FileHelper, CreateFileName with PartialGuid.
+		Version 1.2.6 - Not sure if a publish was needed for this, but the project file now has Source Link enabled, so source stepping should be possible.
 
-Version 1.2.1
-I brought over WordParser.cs.
+		Version 1.2.5 - I changed NumericHelper.IsNumeric to include 3 new optional parameters.
+		bool RemoveDash, true by default. - numbers are removed for this test.
+		double defaultValue, -2,000,000 default value.
+		double errorValue, -2,000,001 default value.
 
-Version 1.2.0 This is my first attempt at Multi-Targeting so this application is availaable to .Net Core 3.1 and .Net Standard 2.1.
+		If the number parses to greater than, it is numeric.
+		My old way didn't work for negative numbers, and I need them now.
 
-</PackageReleaseNotes>
+		Version 1.2.4 - I added a 5th parameter override to NullHelper.Exists and NullHelper.IsNull
+
+		Version 1.2.3 - I accidently had LastIndexOf instead of Index of when I created a new file name in CreateFileNameWithPartialGuid method.
+
+		Version 1.2.2 - I added a new method to FileHelper, CreateFileName with PartialGuid.
+
+		Version 1.2.1
+		I brought over WordParser.cs.
+
+		Version 1.2.0 This is my first attempt at Multi-Targeting so this application is availaable to .Net Core 3.1 and .Net Standard 2.1.
+
+	</PackageReleaseNotes>
     <AssemblyVersion>1.6.8.0</AssemblyVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>False</IncludeSymbols>

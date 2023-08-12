@@ -3,7 +3,11 @@ This library is a collection of helper classes that make working with C# much ea
 
 This package was originally for .Net Framework, then ported to .Net Core, and now .NET 7.
 
-# Working Exmpales - Opensource Projects Using This Project
+# News
+
+8:11.2023 - Added a new method to DateHelper - ParseEightDigitDate.
+
+# Working Examples - Opensource Projects Using This Project
 
 # Blazor Gallery
 Blazor Gallery is a complete C# / SQL Server image portfolio site
@@ -19,7 +23,7 @@ Video:
 Is There 1 Brave C# Programmer In The World? 
 https://youtu.be/HAMgeaCuvHY
 
-6.21.2023: This project has not received a star yet.
+8.11.2023: Blazor Gallery has not received a star yet.
 
 # Blazor Excelerate
 
