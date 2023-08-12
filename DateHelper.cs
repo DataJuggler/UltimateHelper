@@ -664,7 +664,7 @@ namespace DataJuggler.UltimateHelper
             /// <summary>
             /// returns the Date from a format yyyymmdd.
             /// </summary>
-            public DateTime ParseEightDigitDate(string dateText)
+            public static DateTime ParseEightDigitDate(string dateText)
             {
                 // initial value
                 DateTime date = new DateTime(1900, 1, 1);
