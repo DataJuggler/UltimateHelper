@@ -4,9 +4,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using DataJuggler.UltimateHelper.Objects;
+using System.IO;
 
 #endregion
 
@@ -494,20 +494,25 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region GetTextLines(string originalText)
+            #region GetTextLines(string sourceText, bool parseWords = false, char[] delimiter = null)
             /// <summary>
             /// This method returns a list of TextLine objects.
             /// </summary>
             /// <param name="sourceText"></param>
+            /// <param name="parseWords">If true, the words will be attempted to be parsed for each line.</param>
+            /// <param name="delimiter">A character array of the delmiters to parse on.</param>
             /// <returns></returns>
-            public static List<TextLine> GetTextLines(string sourceText)
+            public static List<TextLine> GetTextLines(string sourceText, bool parseWords = false, char[] delimiter = null)
             {  
                 // initial value
-                List<TextLine> textLines = new List<TextLine>();
+                List<TextLine> textLines = null;
 
                 // If the value for the property Exists.sourceText is true
                 if (Exists(sourceText))
                 {
+                    // Create a new collection of 'TextLine' objects.
+                    textLines = new List<TextLine>();
+
                     // if the NewLine is not found
                     if (!sourceText.Contains(Environment.NewLine))
                     {
@@ -546,11 +551,46 @@ namespace DataJuggler.UltimateHelper
                                 // Create a new TextLine
                                 TextLine textLine = new TextLine(text);
 
+                                // if parseWords is true and the textLine exists
+                                if ((parseWords) && (textLine.HasText))
+                                {
+                                    // parse the words for this textLine
+                                    textLine.Words = TextHelper.GetWords(textLine.Text, delimiter);
+                                }
+
                                 // now add this textLine to textLines collection
                                 textLines.Add(textLine);
                             }
                         }
                     }
+                }
+
+                // return value
+                return textLines;
+            }
+            #endregion
+
+            #region GetTextLines(string sourceText, bool parseWords = false, char[] delimiter = null)
+            /// <summary>
+            /// This method returns a list of TextLine objects form a file.
+            /// </summary>
+            /// <param name="filePath">The file to read the text of and parse the lines from.</param>            
+            /// <param name="parseWords">If true, the words will be attempted to be parsed for each line.</param>
+            /// <param name="delimiter">A character array of the delmiters to parse on.</param>
+            /// <returns></returns>
+            public static List<TextLine> GetTextLinesFromFile(string filePath, bool parseWords = false, char[] delimiter = null)
+            {  
+                // initial value
+                List<TextLine> textLines = null;
+
+                // If the value for the property Exists.sourceText is true
+                if ((TextHelper.Exists(filePath)) && (FileHelper.Exists(filePath)))
+                {
+                    // get the sourceText
+                    string sourceText = File.ReadAllText(filePath);
+
+                    // Call the GetTextLines to handle the rest
+                    textLines = GetTextLines(sourceText, parseWords, delimiter);
                 }
 
                 // return value

@@ -57,7 +57,7 @@ namespace DataJuggler.UltimateHelper.Objects
             public override string ToString()
             {
                 // return the Text when ToString is called.
-                return this.Text;
+                return Text;
             }
             #endregion
             
@@ -102,6 +102,23 @@ namespace DataJuggler.UltimateHelper.Objects
                     
                     // return value
                     return hasText;
+                }
+            }
+            #endregion
+            
+            #region HasWords
+            /// <summary>
+            /// This property returns true if this object has a 'Words'.
+            /// </summary>
+            public bool HasWords
+            {
+                get
+                {
+                    // initial value
+                    bool hasWords = (this.Words != null);
+                    
+                    // return value
+                    return hasWords;
                 }
             }
             #endregion

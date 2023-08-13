@@ -14,7 +14,7 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2022</Copyright>
-    <Version>7.1.6</Version>
+    <Version>7.2.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
