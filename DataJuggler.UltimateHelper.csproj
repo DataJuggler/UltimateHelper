@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFramework>net7.0</TargetFramework>
+	<TargetFramework>net7.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>Data Juggler</Company>
     <Authors>Data Juggler</Authors>
@@ -13,8 +13,8 @@ This is a port of DataJuggler.UltimateHelper.Net that was ported to
 DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
-    <Copyright>Data Juggler 2010 - 2022</Copyright>
-    <Version>7.2.0</Version>
+    <Copyright>Data Juggler 2010 - 2023</Copyright>
+    <Version>7.2.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
@@ -24,7 +24,7 @@ I am dropping Core from all my packages.
 		8.13.2023 - Added a new method to TextHelper - GetTextLinesFromFile. I also modified the method
 		GetTextLines, to have an option to parse the words foreach line. The new method GetTextLinesFromFile
 		reads the text from the file, and then calls GetTextLines with optional parameters to also get the words
-		and pass in your own delimiter.
+		and pass in your own delimiter. I added an Icon for the project.
 
 		8:11.2023 - Added a new method to DateHelper - ParseEightDigitDate.
 		Parses a date in the fromat yyyymmdd.
@@ -140,11 +140,12 @@ I am dropping Core from all my packages.
 		Version 1.2.0 This is my first attempt at Multi-Targeting so this application is availaable to .Net Core 3.1 and .Net Standard 2.1.
 
 	</PackageReleaseNotes>
-    <AssemblyVersion>1.6.8.0</AssemblyVersion>
+    <AssemblyVersion>7.2.1</AssemblyVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>False</IncludeSymbols>
-    <FileVersion>1.6.8.0</FileVersion>
+    <FileVersion>7.2.1</FileVersion>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>DataJuggler128.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
@@ -185,6 +186,10 @@ I am dropping Core from all my packages.
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataJuggler128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

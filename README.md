@@ -8,7 +8,7 @@ This package was originally for .Net Framework, then ported to .Net Core, and no
 8.13.2023 - Added a new method to TextHelper - GetTextLinesFromFile. I also modified the method
 GetTextLines, to have an option to parse the words foreach line. The new method GetTextLinesFromFile
 reads the text from the file, and then calls GetTextLines with optional parameters to also get the words
-and pass in your own delimiter.
+and pass in your own delimiter. I also added an icon (png) for the project.
 
 8.11.2023 - Added a new method to DateHelper - ParseEightDigitDate.
 
