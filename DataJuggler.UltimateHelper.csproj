@@ -21,6 +21,11 @@ I am dropping Core from all my packages.
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
     <PackageReleaseNotes>
+		8.13.2023 - Added a new method to TextHelper - GetTextLinesFromFile. I also modified the method
+		GetTextLines, to have an option to parse the words foreach line. The new method GetTextLinesFromFile
+		reads the text from the file, and then calls GetTextLines with optional parameters to also get the words
+		and pass in your own delimiter.
+
 		8:11.2023 - Added a new method to DateHelper - ParseEightDigitDate.
 		Parses a date in the fromat yyyymmdd.
 
