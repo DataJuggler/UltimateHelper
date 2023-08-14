@@ -14,13 +14,18 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2023</Copyright>
-    <Version>7.2.1</Version>
+    <Version>7.2.2</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
     <PackageReleaseNotes>
+		# 8.14.2023 New Video
+
+		Create a Stock Predictor With C# and ML.NET Part I
+		https://youtu.be/hF8LkvwOXQY
+
 		8.13.2023 - Added a new method to TextHelper - GetTextLinesFromFile. I also modified the method
 		GetTextLines, to have an option to parse the words foreach line. The new method GetTextLinesFromFile
 		reads the text from the file, and then calls GetTextLines with optional parameters to also get the words

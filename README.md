@@ -5,6 +5,11 @@ This package was originally for .Net Framework, then ported to .Net Core, and no
 
 # News
 
+8.14.2023 New Video
+
+Create a Stock Predictor With C# and ML.NET Part I
+https://youtu.be/hF8LkvwOXQY
+
 8.13.2023 - Added a new method to TextHelper - GetTextLinesFromFile. I also modified the method
 GetTextLines, to have an option to parse the words foreach line. The new method GetTextLinesFromFile
 reads the text from the file, and then calls GetTextLines with optional parameters to also get the words
