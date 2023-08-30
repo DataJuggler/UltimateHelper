@@ -62,7 +62,7 @@ namespace DataJuggler.UltimateHelper
             /// <summary>
             /// returns the Doubles As Decimals. The purose of this method is C# does not handle division by doubles properly.
             /// </summary>
-            public double DivideDoublesAsDecimals(double dividend, double divisor, int digits)
+            public static double DivideDoublesAsDecimals(double dividend, double divisor, int digits)
             {
                 // initial value
                 double returnValue = 0;
