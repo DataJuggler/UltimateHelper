@@ -5,6 +5,10 @@ This package was originally for .Net Framework, then ported to .Net Core, and no
 
 # News
 
+8.29.2023: I added a new method to NumericHelper - DivideDoublesAsDecimals.
+.NET does not handle division by doubles very well, so this method casts the doubles given
+to decimals, and returns the quotient as a double.
+
 8.14.2023 New Video
 
 Create a Stock Predictor With C# and ML.NET Part I

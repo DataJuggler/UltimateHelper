@@ -58,6 +58,36 @@ namespace DataJuggler.UltimateHelper
 
             #endregion
 
+            #region DivideDoublesAsDecimals(double dividend, double devisor, int digits)
+            /// <summary>
+            /// returns the Doubles As Decimals. The purose of this method is C# does not handle division by doubles properly.
+            /// </summary>
+            public double DivideDoublesAsDecimals(double dividend, double divisor, int digits)
+            {
+                // initial value
+                double returnValue = 0;
+
+                if ((dividend != 0) && (divisor != 0))
+                {
+                    // cast as doubles
+                    decimal dividend2 = (decimal) dividend;
+                    decimal devisor2 = (decimal) divisor;
+
+                    // get the quotient
+                    decimal quotient = dividend2 / devisor2;
+
+                    // get the quotient
+                    quotient = Math.Round(quotient, digits);
+
+                    // Set the return value
+                    returnValue = (double) quotient;
+                }
+                
+                // return value
+                return returnValue;
+            }
+            #endregion
+            
             #region EnsureInRange(int value, int minValue, int MaxValue)
             /// <summary>
             /// This method returns the In Range
