@@ -1,9 +1,12 @@
 # UltimateHelper
 This library is a collection of helper classes that make working with C# much easier.
 
-This package was originally for .Net Framework, then ported to .Net Core, and now .NET 7.
+This package was originally for .Net Framework, then ported to .Net Core, .NET, .NET6, .NET 7
+and now .NET8.
 
 # News
+
+11.14.2023: This project has been updated to .NET 8.
 
 8.29.2023: I added a new method to NumericHelper - DivideDoublesAsDecimals.
 .NET does not handle division by doubles very well, so this method casts the doubles given
