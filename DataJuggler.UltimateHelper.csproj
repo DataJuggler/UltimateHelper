@@ -21,6 +21,8 @@ I am dropping Core from all my packages.
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
     <PackageReleaseNotes>
+		#11.14.2023: This project has been updated to .NET8!
+		
 		# 8.14.2023 New Video
 
 		Create a Stock Predictor With C# and ML.NET Part I
