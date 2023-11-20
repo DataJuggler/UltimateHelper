@@ -22,9 +22,11 @@ I am dropping Core from all my packages.
     <PackageTags>C# Helper Classes</PackageTags>
     <PackageReleaseNotes>
 		# 11.20.2023: Added a new method to TextHelper - ExportWords.
-		
+		I updated to version 8.0.2, with the addition of Index added to Word and TextLine objects. 
+		These values are now set in GetTextLines and GetWords method of TextHelper.
+
 		# 11.14.2023: This project has been updated to .NET8!
-		
+
 		# 8.14.2023 New Video
 
 		Create a Stock Predictor With C# and ML.NET Part I
