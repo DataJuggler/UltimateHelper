@@ -543,6 +543,9 @@ namespace DataJuggler.UltimateHelper
                 // initial value
                 List<TextLine> textLines = null;
 
+                // local
+                int index = -1;
+
                 // If the value for the property Exists.sourceText is true
                 if (Exists(sourceText))
                 {
@@ -584,8 +587,15 @@ namespace DataJuggler.UltimateHelper
                             // add every other row
                             if ((counter % 2) == 0)
                             {
+                                // Increment the value for index
+                                index++;
+
                                 // Create a new TextLine
                                 TextLine textLine = new TextLine(text);
+
+                                // Set Index and LineNumber
+                                textLine.Index = index;
+                                textLine.LineNumber = index + 1;
 
                                 // if parseWords is true and the textLine exists
                                 if ((parseWords) && (textLine.HasText))
@@ -645,6 +655,9 @@ namespace DataJuggler.UltimateHelper
                 // initial value
                 List<Word> words = new List<Word>();
 
+                // local
+                int index = -1;
+
                 // typical delimiter characters
                 char[] delimiterChars = { ' ', '-', '/', ',', '.', ':', '\t' };
 
@@ -667,8 +680,14 @@ namespace DataJuggler.UltimateHelper
                         // verify the word is not an empty string or a space
                         if (!String.IsNullOrEmpty(stringWord))
                         {
+                            // Increment the value for index
+                            index++;
+
                             // Create a new Word
                             Word word = new Word(stringWord);
+
+                            // Set the index
+                            word.Index = index;
 
                             // now add this word to words collection
                             words.Add(word);

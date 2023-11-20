@@ -18,6 +18,7 @@ namespace DataJuggler.UltimateHelper.Objects
         
         #region Private Variables
         private string text;
+        private int index;
         #endregion
 
         #region Constructors
@@ -82,6 +83,17 @@ namespace DataJuggler.UltimateHelper.Objects
                     // return value
                     return hasText;
                 }
+            }
+            #endregion
+            
+            #region Index
+            /// <summary>
+            /// This property gets or sets the value for 'Index'.
+            /// </summary>
+            public int Index
+            {
+                get { return index; }
+                set { index = value; }
             }
             #endregion
             

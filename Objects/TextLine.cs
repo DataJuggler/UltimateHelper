@@ -21,6 +21,7 @@ namespace DataJuggler.UltimateHelper.Objects
         private string text;
         private List<Word> words;
         private int lineNumber;
+        private int index;
         #endregion
 
         #region Constructors
@@ -120,6 +121,17 @@ namespace DataJuggler.UltimateHelper.Objects
                     // return value
                     return hasWords;
                 }
+            }
+            #endregion
+            
+            #region Index
+            /// <summary>
+            /// This property gets or sets the value for 'Index'.
+            /// </summary>
+            public int Index
+            {
+                get { return index; }
+                set { index = value; }
             }
             #endregion
             
