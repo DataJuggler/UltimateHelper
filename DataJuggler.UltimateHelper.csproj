@@ -14,14 +14,16 @@ DataJuggler.UltimateHelper for .Net Core. To be consistent with Microsoft
 I am dropping Core from all my packages.
 </Description>
     <Copyright>Data Juggler 2010 - 2023</Copyright>
-    <Version>8.0.0</Version>
+    <Version>8.0.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.UltimateHelper.git</RepositoryUrl>
     <RepositoryType>Git Hub</RepositoryType>
     <PackageTags>C# Helper Classes</PackageTags>
     <PackageReleaseNotes>
-		#11.14.2023: This project has been updated to .NET8!
+		# 11.20.2023: Added a new method to TextHelper - ExportWords.
+		
+		# 11.14.2023: This project has been updated to .NET8!
 		
 		# 8.14.2023 New Video
 

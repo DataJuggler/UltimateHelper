@@ -452,6 +452,42 @@ namespace DataJuggler.UltimateHelper
                 return result;
             }
             #endregion
+
+            #region ExportTextLines(List<TextLine> lines, string mustContain, string mustNotContain)
+            /// <summary>
+            /// This method returns a string which is made up of the text of all the words plus a space.
+            /// The string is then trimmed and returned.
+            /// </summary>
+            /// <param name="words">A collection of Word objects'</param>            
+            public static string ExportWords(List<Word> words)
+            {
+                // initial value
+                string result = "";
+
+                // If the words collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(words))
+                {
+                    // Create a new instance of a 'StringBuilder' object.
+                    StringBuilder sb = new StringBuilder();
+
+                    // Iterate the collection of Word objects
+                    foreach (Word word in words)                    
+                    {
+                        // Add this word
+                        sb.Append(word.Text);
+
+                        // Add a space
+                        sb.Append(TextHelper.Indent(1));
+                    }
+
+                    // set the return value
+                    result = sb.ToString().Trim();
+                }
+                
+                // return value
+                return result;
+            }
+            #endregion
             
             #region GetSpacesCount(string text)
             /// <summary>

@@ -6,6 +6,8 @@ and now .NET8.
 
 # News
 
+11.20.2023: Added a new method to TextHelper - ExportWords.
+
 11.14.2023: This project has been updated to .NET 8.
 
 8.29.2023: I added a new method to NumericHelper - DivideDoublesAsDecimals.
