@@ -77,6 +77,34 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
+            #region CloneLines(List<TextLine> lines)
+            /// <summary>
+            /// returns a list of Lines
+            /// </summary>
+            public static List<TextLine> CloneLines(List<TextLine> lines)
+            {
+                // initial value
+                List<TextLine> cloneLines = new List<TextLine>();
+
+                // If the lines collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(lines))
+                {
+                    // Iterate the collection of TextLine objects
+                    foreach (TextLine textLine in lines)
+                    {
+                        TextLine cloneLine = new TextLine();
+                        cloneLine.Text = textLine.Text;
+
+                        // Set the CloneLines
+                        cloneLines.Add(cloneLine);
+                    }
+                }
+
+                // return value
+                return cloneLines;
+            }
+            #endregion
+
             #region CombineStrings(string string1, string string2)
             /// <summary>
             /// This method appends string2 to the end of string1

@@ -6,6 +6,9 @@ and now .NET8.
 
 # News
 
+12.14.2023: I added a new method CloneLines to TextHelper. This method create a new List of TextLine objects,
+and copies the text from the source parameter. This is used by DataJuggler.RandomUSD. 
+
 11.20.2023: Added a new method to TextHelper - ExportWords.
 I also added a new property Index to Word and TextLine objects, and set the value for Index
 when GetWords and GetTextLines is called.
