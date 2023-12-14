@@ -86,14 +86,23 @@ namespace DataJuggler.UltimateHelper
                 // initial value
                 List<TextLine> cloneLines = new List<TextLine>();
 
+                // local
+                int lineNumber = 0;
+
                 // If the lines collection exists and has one or more items
                 if (ListHelper.HasOneOrMoreItems(lines))
                 {
                     // Iterate the collection of TextLine objects
                     foreach (TextLine textLine in lines)
                     {
+                        // Increment the value for lineNumber
+                        lineNumber++;
+
                         TextLine cloneLine = new TextLine();
                         cloneLine.Text = textLine.Text;
+
+                        // Set the value
+                        cloneLine.LineNumber = lineNumber;
 
                         // Set the CloneLines
                         cloneLines.Add(cloneLine);
