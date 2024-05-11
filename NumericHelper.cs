@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 #endregion
 
@@ -238,6 +239,35 @@ namespace DataJuggler.UltimateHelper
 
                 // return value
                 return newList;
+            }
+            #endregion
+            
+            #region GetNumbersOnly(string source)
+            /// <summary>
+            /// returns the Numbers Only
+            /// </summary>
+            public static string GetNumbersOnly(string source)
+            {
+                // initial value
+                string numbersOnly = "";
+
+                if (TextHelper.Exists(source))
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    // get the digits only - 0 - 9
+                    foreach (Char c in source)
+                    {
+                        // if a digit
+                        if (Char.IsDigit(c))
+                        {
+                            sb.Append(c);
+                        }
+                    }
+                }
+                
+                // return value
+                return numbersOnly;
             }
             #endregion
             
