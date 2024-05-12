@@ -264,6 +264,9 @@ namespace DataJuggler.UltimateHelper
                             sb.Append(c);
                         }
                     }
+
+                    // set the return value for numbers only
+                    numbersOnly = sb.ToString();
                 }
                 
                 // return value
