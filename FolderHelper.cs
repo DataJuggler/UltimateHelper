@@ -57,6 +57,14 @@ namespace DataJuggler.UltimateHelper
                             {
                                 // Set the FullName
                                 parentPath = parent.FullName;
+
+                                // exit
+                                break;
+                            }
+                            else
+                            {
+                                // Reset
+                                directoryInfo = new DirectoryInfo(parent.FullName);
                             }
                         }
                         else
