@@ -827,38 +827,48 @@ namespace DataJuggler.UltimateHelper
                 return remainder;
             }
             #endregion
-
-            #region RoundDown(double sourceDouble)
+            
+            #region RoundDown(double number, int digits)
             /// <summary>
-            /// This method returns the sourceDouble minus the remainder
+            /// method returns the Down
             /// </summary>
-            public static int RoundDown(double sourceDouble)
+            public static double RoundDown(double number, int digits)
             {
-                // initial value
-                int returnValue = 0;
-
-                // now set the return value
-                returnValue = Convert.ToInt32(Math.Floor(sourceDouble));
-
-                // return value
-                return returnValue;
+                double factor = Math.Pow(10, digits);
+                return Math.Floor(number * factor) / factor;
+            }
+            #endregion
+            
+            #region RoundDown(decimal number, int digits)
+            /// <summary>
+            /// method returns the Down
+            /// </summary>
+            public static decimal RoundDown(decimal number, int digits)
+            {
+                decimal factor = (decimal) Math.Pow(10, digits);
+                return Math.Floor(number * factor) / factor;
+            }
+            #endregion
+            
+            #region RoundUp(decimal number)
+            /// <summary>
+            /// method RoundsUp to the digits requested
+            /// </summary>
+            public decimal RoundUp(decimal number, int digits)
+            {
+                decimal factor = (decimal) Math.Pow(10, digits);
+                return Math.Ceiling(number * factor) / factor;
             }
             #endregion
 
-            #region RoundUp(double sourceDouble)
+            #region RoundUp(decimal number)
             /// <summary>
-            /// This method returns the sourceDouble minus the remainder + 1 to round up
+            /// method RoundsUp to the digits requested
             /// </summary>
-            public static int RoundUp(double sourceDouble)
+            public double RoundUp(double number, int digits)
             {
-                // initial value
-                int returnValue = 0;
-
-                // now set the return value
-                returnValue = Convert.ToInt32(Math.Ceiling(sourceDouble));
-
-                // return value
-                return returnValue;
+                double factor = Math.Pow(10, digits);
+                return Math.Ceiling(number * factor) / factor;
             }
             #endregion
             
