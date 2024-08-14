@@ -854,7 +854,7 @@ namespace DataJuggler.UltimateHelper
             /// <summary>
             /// method RoundsUp to the digits requested
             /// </summary>
-            public decimal RoundUp(decimal number, int digits)
+            public static decimal RoundUp(decimal number, int digits)
             {
                 decimal factor = (decimal) Math.Pow(10, digits);
                 return Math.Ceiling(number * factor) / factor;
@@ -865,7 +865,7 @@ namespace DataJuggler.UltimateHelper
             /// <summary>
             /// method RoundsUp to the digits requested
             /// </summary>
-            public double RoundUp(double number, int digits)
+            public static double RoundUp(double number, int digits)
             {
                 double factor = Math.Pow(10, digits);
                 return Math.Ceiling(number * factor) / factor;

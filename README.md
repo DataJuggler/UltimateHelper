@@ -6,6 +6,8 @@ and now .NET8.
 
 # News
 
+8.14.2024: I changed NumericHelper.RoundDown and RoundUp to now take into account digits.
+
 1.16.2024: The description was wrong for this project. I had forgot to change the description to, This project has been updated to .NET 8.
 
 12.14.2023: I added a new method CloneLines to TextHelper. This method create a new List of TextLine objects,
