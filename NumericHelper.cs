@@ -861,7 +861,7 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region RoundUp(decimal number)
+            #region RoundUp(double number, int digits)
             /// <summary>
             /// method RoundsUp to the digits requested
             /// </summary>
