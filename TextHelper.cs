@@ -592,13 +592,22 @@ namespace DataJuggler.UltimateHelper
                     // if the NewLine is not found
                     if (!sourceText.Contains(Environment.NewLine))
                     {
-                        // The parsing on lines isn't working, this is a good hack till
-                        // I rewrite the parser to be more robust someday
-                        sourceText = sourceText.Replace("\n", Environment.NewLine);
+                        if (sourceText.Contains("\r"))
+                        {   
+                            // The parsing on lines isn't working, this is a good hack till
+                            // I rewrite the parser to be more robust someday
+                            sourceText = sourceText.Replace("\r", Environment.NewLine);
+                        }
+                        else if (sourceText.Contains("\n"))
+                        {
+                            // The parsing on lines isn't working, this is a good hack till
+                            // I rewrite the parser to be more robust someday
+                            sourceText = sourceText.Replace("\n", Environment.NewLine);
+                        }
                     }
 
                     // just in case, fix for the hack
-                    sourceText = sourceText.Replace("\r\r", "\r");
+                    sourceText = sourceText.Replace("\r\r", "\r").Replace("\n\n", "\n");
 
                     // typical delimiter characters
                     char[] delimiterChars = Environment.NewLine.ToCharArray();
