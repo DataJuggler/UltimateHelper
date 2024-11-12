@@ -6,6 +6,8 @@ and now .NET8.
 
 # News
 
+11.12.2024: I updated the project to .NET 9.
+
 9.2.2024: I fixed a bug with GetTextLines in case the text just has \r, instead of \r\n for new lines.
 
 8.14.2024: I changed NumericHelper.RoundDown and RoundUp to now take into account digits.
