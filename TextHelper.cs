@@ -690,7 +690,7 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region GetWords(string originalText)
+            #region GetWords(string sourceText)
             /// <summary>
             /// This method returns all of the words in a list of strings
             /// </summary>
@@ -698,50 +698,70 @@ namespace DataJuggler.UltimateHelper
             /// <returns></returns>
             public static List<Word> GetWords(string sourceText, char[] delimiters = null)
             {
-                // initial value
+                 // Use stackalloc to create a ReadOnlySpan<char> from char[]
+                ReadOnlySpan<char> spanDelimiters = delimiters;
+
+                List<Word> words = GetWords(sourceText, spanDelimiters);
+
+
+                // return value
+                return words;
+            }
+            #endregion
+
+            #region GetWords(string originalText)
+            /// <summary>
+            /// This method returns all of the words in a list of strings
+            /// </summary>
+            /// <param name="sourceText"></param>
+            /// <returns></returns>
+            public static List<Word> GetWords(string sourceText, ReadOnlySpan<char> delimiters = default )
+            {
+                // Initial value
                 List<Word> words = new List<Word>();
-
-                // local
+    
+                // Local
                 int index = -1;
+    
+                // Default delimiter characters
+                ReadOnlySpan<char> defaultDelimiterChars = stackalloc char[] { ' ', '-', '/', ',', '.', ':', '\t' };
+    
+                // Use provided delimiters or default if not provided
+                ReadOnlySpan<char> delimiterChars = delimiters.Length > 0 ? delimiters : defaultDelimiterChars;
 
-                // typical delimiter characters
-                char[] delimiterChars = { ' ', '-', '/', ',', '.', ':', '\t' };
-
-                // if the delimiters exists
-                if (delimiters != null)
+                // Verify the sourceText exists
+                if (!string.IsNullOrEmpty(sourceText))
                 {
-                    // use the delimiters passedin
-                    delimiterChars = delimiters;
-                }
+                    // Create a ReadOnlySpan
+                    ReadOnlySpan<char> inputAsSpan = sourceText;
 
-                // verify the sourceText exists
-                if (!String.IsNullOrEmpty(sourceText))
-                {
-                    // Get the list of strings
-                    string[] strings = sourceText.Split(delimiterChars);
+                    // update 11.15.2024: Switching to SpanSplitEnumerator
+                    MemoryExtensions.SpanSplitEnumerator<char> ranges = inputAsSpan.Split(delimiterChars);
 
-                    // now iterate the strings
-                    foreach (string stringWord in strings)
+                    // iterate the ranges
+                    foreach (var segment in inputAsSpan.Split(delimiterChars))
                     {
-                        // verify the word is not an empty string or a space
-                        if (!String.IsNullOrEmpty(stringWord))
+                        // Get the text
+                        ReadOnlySpan<char> text = inputAsSpan[segment];
+
+                        if (!text.IsEmpty)
                         {
                             // Increment the value for index
                             index++;
-
+                
                             // Create a new Word
-                            Word word = new Word(stringWord);
-
+                            Word word = new Word(text.ToString());
+                
                             // Set the index
                             word.Index = index;
-
-                            // now add this word to words collection
+                
+                            // Add this word to words collection
                             words.Add(word);
                         }
                     }
                 }
-
-                // return value
+    
+                // Return value
                 return words;
             }
             #endregion
