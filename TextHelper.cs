@@ -526,6 +526,41 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
             
+            #region FormatPhoneNumber(string rawNumber)
+            /// <summary>
+            /// Format Phone Number
+            /// </summary>
+            public string FormatPhoneNumber(string rawNumber)
+            {
+                // initial value
+                string phoneNumber = "";
+
+                // temp value
+                string digitsOnly = NumericHelper.GetNumbersOnly(rawNumber);
+
+                // If the digitsOnly string exists
+                if (TextHelper.Exists(digitsOnly))
+                {
+                    // if the number is like 18005551234
+                    if (digitsOnly.StartsWith("1"))
+                    {
+                        // Trim off the 1
+                        digitsOnly = digitsOnly.Substring(1);
+                    }
+
+                    // if 10 digits
+                    if (digitsOnly.Length == 10)
+                    {
+                        // Format the number (area code) + xxx - xxxx
+                        phoneNumber = "(" + digitsOnly.Substring(0, 3) + ") " + digitsOnly.Substring(3, 3) + " - " + digitsOnly.Substring(6);
+                    }
+                }
+
+                // return value
+                return phoneNumber;
+            }
+            #endregion
+            
             #region GetSpacesCount(string text)
             /// <summary>
             /// This method returns the number of preceding spaces in the text given.
@@ -703,7 +738,6 @@ namespace DataJuggler.UltimateHelper
 
                 List<Word> words = GetWords(sourceText, spanDelimiters);
 
-
                 // return value
                 return words;
             }
@@ -715,7 +749,7 @@ namespace DataJuggler.UltimateHelper
             /// </summary>
             /// <param name="sourceText"></param>
             /// <returns></returns>
-            public static List<Word> GetWords(string sourceText, ReadOnlySpan<char> delimiters = default )
+            public static List<Word> GetWords(ReadOnlySpan<char> inputAsSpan, ReadOnlySpan<char> delimiters = default )
             {
                 // Initial value
                 List<Word> words = new List<Word>();
@@ -730,11 +764,8 @@ namespace DataJuggler.UltimateHelper
                 ReadOnlySpan<char> delimiterChars = delimiters.Length > 0 ? delimiters : defaultDelimiterChars;
 
                 // Verify the sourceText exists
-                if (!string.IsNullOrEmpty(sourceText))
+                if (!inputAsSpan.IsEmpty)
                 {
-                    // Create a ReadOnlySpan
-                    ReadOnlySpan<char> inputAsSpan = sourceText;
-
                     // update 11.15.2024: Switching to SpanSplitEnumerator
                     MemoryExtensions.SpanSplitEnumerator<char> ranges = inputAsSpan.Split(delimiterChars);
 
