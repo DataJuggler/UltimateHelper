@@ -530,7 +530,7 @@ namespace DataJuggler.UltimateHelper
             /// <summary>
             /// Format Phone Number
             /// </summary>
-            public string FormatPhoneNumber(string rawNumber)
+            public static string FormatPhoneNumber(string rawNumber)
             {
                 // initial value
                 string phoneNumber = "";
