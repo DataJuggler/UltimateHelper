@@ -842,6 +842,49 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
+            #region GetWordsFromCapitalLetters(string sourceText)
+            /// <summary>
+            /// returns a list of Words From Capital Letters
+            /// </summary>
+            public List<Word> GetWordsFromCapitalLetters(string sourceText)
+            {
+                // initial value
+                List<Word> words = new List<Word>();
+
+                // local
+                Word word = null;
+
+                // If the sourceText string exists
+                if (TextHelper.Exists(sourceText))
+                {
+                    // Iterate the collection of char objects
+                    foreach(char c in sourceText)
+                    {
+                        // if UpperCase
+                        if (Char.IsUpper(c))
+                        {
+                            // Create a new instance of a 'Word' object.
+                            word = new Word();
+
+                            // Set the initial vaue
+                            word.Text = c;
+
+                            // Add this word
+                            words.Add(word);
+                        }
+                        else if (word != null)
+                        {
+                            // Add to the existing word
+                            word.Text += c;
+                        }
+                    }
+                }
+
+                // return value
+                return words;
+            }
+            #endregion
+            
             #region Indent(int indent)
             /// <summary>
             /// This method is used to indent a string with x number of preceding spaces.
