@@ -6,6 +6,14 @@ and now .NET8.
 
 # News
 
+1.21.2025: Two new methods to TextHelper:
+
+    ReplaceTextInFile(string fileName, string textToFind, string replacementText)
+
+	ReplaceTextInFile(string fileName, List<Replacement> replacements
+
+A Replacement is just a class with two properties: SearchText and ReplacementValue
+
 11.12.2024: I updated the project to .NET 9.
 
 9.2.2024: I fixed a bug with GetTextLines in case the text just has \r, instead of \r\n for new lines.

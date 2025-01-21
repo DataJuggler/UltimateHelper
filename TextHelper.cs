@@ -1053,6 +1053,57 @@ namespace DataJuggler.UltimateHelper
                 }
             }
             #endregion
+
+            #region ReplaceTextInFile(string fileName, List<Replacement> replacements)
+            /// <summary>
+            /// Replace Text In File
+            /// </summary>
+            public static void ReplaceTextInFile(string fileName, List<Replacement> replacements)
+            {
+                try
+                {
+                    // If the string exists and the replacements collection has 1 or more item
+                    if ((TextHelper.Exists(fileName) && (ListHelper.HasOneOrMoreItems(replacements))))
+                    {
+                        // Get the textLines
+                        List<TextLine> lines = GetTextLinesFromFile(fileName);
+
+                        // If the lines collection exists and has one or more items
+                        if (ListHelper.HasOneOrMoreItems(lines))
+                        {
+                            // Iterate the collection of TextLine objects
+                            foreach (TextLine line in lines)
+                            {
+                                // Iterate the collection of Replacement objects
+                                foreach (Replacement replacement in replacements)
+                                {
+                                    // if exists
+                                    if (line.Text.Contains(replacement.SearchText))
+                                    {
+                                        // Update the text
+                                        line.Text = line.Text.Replace(replacement.SearchText, replacement.ReplaceValue);
+                                    }
+                                }
+                            }
+                        }
+
+                        // Get the new fileText
+                        string fileText = ExportTextLines(lines);
+
+                        // Delete the file
+                        File.Delete(fileName);
+
+                        // Write the file back out
+                        File.WriteAllText(fileName, fileText);
+                    }
+                }
+                catch (Exception error)
+                {
+                    // For debugging only for now
+                    DebugHelper.WriteDebugError("ReplaceTextInFile", "TextHelper", error);
+                }
+            }
+            #endregion
             
         #endregion
         
