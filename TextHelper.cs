@@ -1007,47 +1007,25 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
             
-            #region ReplaceTextInFile(string fileName, string textToFind, string replacementText)
+            #region ReplaceTextInFile(string fileName, string searchText, string replaceValue)
             /// <summary>
             /// Replace Text In File
             /// </summary>
-            public static void ReplaceTextInFile(string fileName, string textToFind, string replacementText)
+            public static void ReplaceTextInFile(string fileName, string searchText, string replaceValue)
             {
                 try
                 {
                     // If all 3 strings exist
-                    if (TextHelper.Exists(fileName, textToFind, replacementText))
+                    if (TextHelper.Exists(fileName, searchText, replaceValue))
                     {
-                        // Get the textLines
-                        List<TextLine> lines = GetTextLinesFromFile(fileName);
+                        // Create a new collection of 'Replacement' objects.
+                        List<Replacement> replacements = new List<Replacement>();
 
-                        // If the lines collection exists and has one or more items
-                        if (ListHelper.HasOneOrMoreItems(lines))
-                        {
-                            // Iterate the collection of TextLine objects
-                            foreach (TextLine line in lines)
-                            {
-                                // if exists
-                                if (line.Text.Contains(textToFind))
-                                {
-                                    // if the text doesn't exist aleady
-                                    if (!line.Text.Contains(replacementText))
-                                    {
-                                        // Update the text
-                                        line.Text = line.Text.Replace(textToFind, replacementText);
-                                    }
-                                }
-                            }
-                        }
+                        // Add to the Replacements
+                        replacements.Add(new Replacement(searchText, replaceValue));
 
-                        // Get the new fileText
-                        string fileText = ExportTextLines(lines);
-
-                        // Delete the file
-                        File.Delete(fileName);
-
-                        // Write the file back out
-                        File.WriteAllText(fileName, fileText);
+                        // Call the override for this method
+                        ReplaceTextInFile(fileName, replacements);
                     }
                 }
                 catch (Exception error)
@@ -1080,12 +1058,17 @@ namespace DataJuggler.UltimateHelper
                             {
                                 // Iterate the collection of Replacement objects
                                 foreach (Replacement replacement in replacements)
-                                {
-                                    // if exists
+                                {  
+                                    // This is needed so DataManager can become Data
                                     if (line.Text.Contains(replacement.SearchText))
                                     {
-                                        // if the text doesn't exist already
-                                        if (!line.Text.Contains(replacement.ReplaceValue))
+                                        // if the ReplaceValue exists in the SearchText
+                                        if (replacement.SearchText.Contains(replacement.ReplaceValue))
+                                        {
+                                            // Update the text - This check was needed so DataManager can become Data
+                                            line.Text = line.Text.Replace(replacement.SearchText, replacement.ReplaceValue);
+                                        }
+                                        else if (!line.Text.Contains(replacement.ReplaceValue))
                                         {
                                             // Update the text
                                             line.Text = line.Text.Replace(replacement.SearchText, replacement.ReplaceValue);
