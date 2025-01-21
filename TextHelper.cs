@@ -846,7 +846,7 @@ namespace DataJuggler.UltimateHelper
             /// <summary>
             /// returns a list of Words From Capital Letters
             /// </summary>
-            public List<Word> GetWordsFromCapitalLetters(string sourceText)
+            public static List<Word> GetWordsFromCapitalLetters(string sourceText)
             {
                 // initial value
                 List<Word> words = new List<Word>();
@@ -867,7 +867,7 @@ namespace DataJuggler.UltimateHelper
                             word = new Word();
 
                             // Set the initial vaue
-                            word.Text = c;
+                            word.Text = c.ToString();
 
                             // Add this word
                             words.Add(word);
@@ -1004,6 +1004,53 @@ namespace DataJuggler.UltimateHelper
 
                 // return value
                 return startsWithAVowel;
+            }
+            #endregion
+            
+            #region ReplaceTextInFile(string fileName, string textToFind, string replacementText)
+            /// <summary>
+            /// Replace Text In File
+            /// </summary>
+            public static void ReplaceTextInFile(string fileName, string textToFind, string replacementText)
+            {
+                try
+                {
+                    // If all 3 strings exist
+                    if (TextHelper.Exists(fileName, textToFind, replacementText))
+                    {
+                        // Get the textLines
+                        List<TextLine> lines = GetTextLinesFromFile(fileName);
+
+                        // If the lines collection exists and has one or more items
+                        if (ListHelper.HasOneOrMoreItems(lines))
+                        {
+                            // Iterate the collection of TextLine objects
+                            foreach (TextLine line in lines)
+                            {
+                                // if exists
+                                if (line.Text.Contains(textToFind))
+                                {
+                                    // Update the text
+                                    line.Text = line.Text.Replace(textToFind, replacementText);
+                                }
+                            }
+                        }
+
+                        // Get the new fileText
+                        string fileText = ExportTextLines(lines);
+
+                        // Delete the file
+                        File.Delete(fileName);
+
+                        // Write the file back out
+                        File.WriteAllText(fileName, fileText);
+                    }
+                }
+                catch (Exception error)
+                {
+                    // For debugging only for now
+                    DebugHelper.WriteDebugError("ReplaceTextInFile", "TextHelper", error);
+                }
             }
             #endregion
             
