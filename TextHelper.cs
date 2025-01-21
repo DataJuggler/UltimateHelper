@@ -1030,8 +1030,12 @@ namespace DataJuggler.UltimateHelper
                                 // if exists
                                 if (line.Text.Contains(textToFind))
                                 {
-                                    // Update the text
-                                    line.Text = line.Text.Replace(textToFind, replacementText);
+                                    // if the text doesn't exist aleady
+                                    if (!line.Text.Contains(replacementText))
+                                    {
+                                        // Update the text
+                                        line.Text = line.Text.Replace(textToFind, replacementText);
+                                    }
                                 }
                             }
                         }
@@ -1080,8 +1084,12 @@ namespace DataJuggler.UltimateHelper
                                     // if exists
                                     if (line.Text.Contains(replacement.SearchText))
                                     {
-                                        // Update the text
-                                        line.Text = line.Text.Replace(replacement.SearchText, replacement.ReplaceValue);
+                                        // if the text doesn't exist already
+                                        if (!line.Text.Contains(replacement.ReplaceValue))
+                                        {
+                                            // Update the text
+                                            line.Text = line.Text.Replace(replacement.SearchText, replacement.ReplaceValue);
+                                        }
                                     }
                                 }
                             }
