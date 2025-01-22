@@ -6,6 +6,10 @@ and now .NET8.
 
 # News
 
+1.22.2025: Added a new method to TextHelper
+
+	FindTextInQuotes(string input)
+
 1.21.2025: Two new methods to TextHelper:
 
     ReplaceTextInFile(string fileName, string textToFind, string replacementText)

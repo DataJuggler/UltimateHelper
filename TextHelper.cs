@@ -526,6 +526,35 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
             
+            #region FindTextInQuotes(string input)
+            /// <summary>
+            /// method returns the Text In Quotes
+            /// </summary>
+            public static string FindTextInQuotes(string input)
+            {
+                // Initial Value
+                string innerText = string.Empty;
+
+                // verify the string exists
+                if (TextHelper.Exists(input))
+                {
+                    // Find the start and end index of the quotes
+                    int startIndex = input.IndexOf('"');
+                    int endIndex = input.LastIndexOf('"');
+
+                    // Check if both startIndex and endIndex are valid
+                    if (startIndex >= 0 && endIndex > startIndex)
+                    {
+                        // Extract the substring between the quotes
+                        innerText = input.Substring(startIndex + 1, endIndex - startIndex - 1);
+                    }
+                }
+
+                // Return Value
+                return innerText;
+            }
+            #endregion
+            
             #region FormatPhoneNumber(string rawNumber)
             /// <summary>
             /// Format Phone Number
