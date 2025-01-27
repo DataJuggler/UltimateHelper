@@ -1,14 +1,54 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
+using System.Diagnostics.Metrics;
+using System.Diagnostics;
+using System.Drawing;
+using System.Reflection;
+using System.Resources;
+using System.Xml.Linq;
+using System.Runtime.Versioning;
 
 namespace DataJuggler.UltimateHelper
 {
+    
+    [SupportedOSPlatform("windows")]
     public class EnvironmentVariableHelper
     {
 
         #region Methods
 
+            #region DeleteEnvironmentVariable(string variableName)
+            /// <summary>
+            /// Delete Environment Variable
+            /// </summary>
+            public void DeleteEnvironmentVariable(string variableName)
+            {
+                try
+                {
+                    // Opens the Environment key for the current user with write access.
+                    RegistryKey currentUserEnvironment = Registry.CurrentUser.OpenSubKey("Environment", true);
+        
+                    if (currentUserEnvironment != null)
+                    {
+                        // Deletes the specified sub-key (variable).
+                        currentUserEnvironment.DeleteSubKey(variableName, false);
+                        Console.WriteLine($"Successfully deleted environment variable: {variableName}");
+            
+                        // Closes the registry key to free resources.
+                        currentUserEnvironment.Close();
+                    }
+                }
+                catch (Exception error)
+                {
+                    // for debugging for now
+                    DebugHelper.WriteDebugError("DeleteEnvironmentVariable", "EnvironmentVariableHelper", error);
+                }                
+            }
+            #endregion
+            
             #region GetEnvironmentVariableValue(string variableName, EnvironmentVariableTarget target)
             /// <summary>
             /// This method is used to get an environment value
