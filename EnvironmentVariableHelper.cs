@@ -19,35 +19,6 @@ namespace DataJuggler.UltimateHelper
     {
 
         #region Methods
-
-            #region DeleteEnvironmentVariable(string variableName)
-            /// <summary>
-            /// Delete Environment Variable
-            /// </summary>
-            public static void DeleteEnvironmentVariable(string variableName)
-            {
-                try
-                {
-                    // Opens the Environment key for the current user with write access.
-                    RegistryKey currentUserEnvironment = Registry.CurrentUser.OpenSubKey("Environment", true);
-        
-                    if (currentUserEnvironment != null)
-                    {
-                        // Deletes the specified sub-key (variable).
-                        currentUserEnvironment.DeleteSubKey(variableName, false);
-                        Console.WriteLine($"Successfully deleted environment variable: {variableName}");
-            
-                        // Closes the registry key to free resources.
-                        currentUserEnvironment.Close();
-                    }
-                }
-                catch (Exception error)
-                {
-                    // for debugging for now
-                    DebugHelper.WriteDebugError("DeleteEnvironmentVariable", "EnvironmentVariableHelper", error);
-                }                
-            }
-            #endregion
             
             #region GetEnvironmentVariableValue(string variableName, EnvironmentVariableTarget target)
             /// <summary>

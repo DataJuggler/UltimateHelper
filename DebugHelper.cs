@@ -59,7 +59,7 @@ namespace DataJuggler.UltimateHelper
                     string completeMessage = sb.ToString();
 
                     // Write this line to the output window
-                    Debug.WriteLine(completeMessage);
+                    Console.WriteLine(completeMessage);
                 }
             }
             #endregion
