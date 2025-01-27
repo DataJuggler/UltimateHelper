@@ -24,7 +24,7 @@ namespace DataJuggler.UltimateHelper
             /// <summary>
             /// Delete Environment Variable
             /// </summary>
-            public void DeleteEnvironmentVariable(string variableName)
+            public static void DeleteEnvironmentVariable(string variableName)
             {
                 try
                 {
