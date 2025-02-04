@@ -22,6 +22,7 @@ namespace DataJuggler.UltimateHelper.Objects
         private List<Word> words;
         private int lineNumber;
         private int index;
+        private string tag;
         #endregion
 
         #region Constructors
@@ -231,6 +232,17 @@ namespace DataJuggler.UltimateHelper.Objects
                     // return value
                     return partialCommentText;
                 }
+            }
+            #endregion
+            
+            #region Tag
+            /// <summary>
+            /// This property gets or sets the value for 'Tag'.
+            /// </summary>
+            public string Tag
+            {
+                get { return tag; }
+                set { tag = value; }
             }
             #endregion
             
