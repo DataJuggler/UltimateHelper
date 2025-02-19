@@ -754,7 +754,7 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region GetWords(string sourceText)
+            #region GetWords(string sourceText, char[] delimiters = null)
             /// <summary>
             /// This method returns all of the words in a list of strings
             /// </summary>

@@ -23,6 +23,20 @@ namespace DataJuggler.UltimateHelper
         
         #region Methods
 
+            #region Exists(string path)
+            /// <summary>
+            /// returns the
+            /// </summary>
+            public static bool Exists(string path)
+            {
+                // return true if the text Path exists and the Directory exists on disc
+                bool exists = ((TextHelper.Exists(path)) && (Directory.Exists(path)));
+
+                // return value
+                return exists;
+            }
+            #endregion
+            
             #region FindParentDirectory(string path, string name, int maxParents = 10)
             /// <summary>
             /// returns the Parent Directory, or EmptyString if not found.

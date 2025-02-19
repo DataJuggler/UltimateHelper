@@ -9,6 +9,7 @@ and now .NET8.
 2.17.2025: I added a new method to FolderHelper Exists
 
     bool Exists(string path);
+
 1.22.2025: Added a new method to TextHelper
 
 	FindTextInQuotes(string input)
