@@ -6,6 +6,18 @@ and now .NET8.
 
 # News
 
+2.23.2025: Added a new class called Morpheas
+
+This class is used to determine if an object has changes.
+
+    // generate a hash
+    string hash = Morpheas.Serialize(obj);
+
+    // has this object changed
+    bool hasChanges = Morpheas.Compare(obj, hash)';
+
+I use to enable button for Save if an object has changes.
+
 2.17.2025: I added a new method to FolderHelper Exists
 
     bool Exists(string path);
