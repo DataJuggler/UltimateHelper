@@ -1,9 +1,10 @@
-﻿#region using statements
+﻿
+#region using statements
 
+using System;
 using System.Text;
 using System.Security.Cryptography;
 using System.Text.Json;
-using DataJuggler.UltimateHelper;
 
 #endregion
 
