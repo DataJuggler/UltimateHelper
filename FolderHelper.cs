@@ -95,6 +95,27 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
             
+            #region GetFolders(string folder)
+            /// <summary>
+            /// returns a list of Folders
+            /// </summary>
+            public static List<string> GetFolders(string folder)
+            {
+                // initial value
+                List<string> folders = null;
+
+                // if the Folder exists
+                if (Exists(folder))
+                {
+                    // Set the return value
+                    folders = Directory.GetDirectories(folder).ToList();
+                }
+
+                // return value
+                return folders;
+            }
+            #endregion
+            
         #endregion
         
     }

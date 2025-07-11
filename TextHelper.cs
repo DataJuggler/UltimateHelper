@@ -490,7 +490,7 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region ExportTextLines(List<TextLine> lines, string mustContain, string mustNotContain)
+            #region ExportTextLines(List<Word> words)
             /// <summary>
             /// This method returns a string which is made up of the text of all the words plus a space.
             /// The string is then trimmed and returned.

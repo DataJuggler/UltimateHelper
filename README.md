@@ -1,10 +1,15 @@
 # UltimateHelper
 This library is a collection of helper classes that make working with C# much easier.
 
-This package was originally for .Net Framework, then ported to .Net Core, .NET, .NET6, .NET 7
-and now .NET8.
+This package was originally for .Net Framework, then ported to .Net Core, .NET, .NET6, .NET 7, 
+.NET 8and now .NET9.
 
 # News
+
+7.11.2025: I added a new method FolderHelper.GetFolders()
+
+    // Gets the folders as a List<string>
+    List<string> folders = FolderHelper.GetFolders(path);
 
 2.23.2025: Added a new class called Morpheas
 
