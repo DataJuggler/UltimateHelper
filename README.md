@@ -6,6 +6,28 @@ This package was originally for .Net Framework, then ported to .Net Core, .NET, 
 
 # News
 
+7.31.2025: Version 9.1.2 - added anew method to FolderHelper called IsFolderEmpty
+This method returns true if the folder is empty.
+
+    public static bool IsFolderEmpty(string folderPath)
+    {
+        // Initial Value
+        bool isEmpty = false;
+        
+        // If the directory exists
+        if (Directory.Exists(folderPath))
+        {
+            // Get all files and subfolders
+            string[] entries = Directory.GetFileSystemEntries(folderPath);
+            
+            // Set the return value
+            isEmpty = (entries.Length == 0);
+        }
+        
+        // Return value
+        return isEmpty;
+    }
+
 7.11.2025: I added a new method FolderHelper.GetFolders()
 
     // Gets the folders as a List<string>
