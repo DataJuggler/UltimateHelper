@@ -116,6 +116,31 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
             
+            #region IsFolderEmpty(string folderPath)
+            /// <summary>
+            /// This method returns true if the Folder exists and doesn't have any files.
+            /// If the folder doesn't exist it will return false;
+            /// </summary>
+            public static bool IsFolderEmpty(string folderPath)
+            {
+                // Initial Value
+                bool isEmpty = false;
+
+                // If the directory exists
+                if (Directory.Exists(folderPath))
+                {
+                    // Get all files and subfolders
+                    string[] entries = Directory.GetFileSystemEntries(folderPath);
+
+                    // Set the return value
+                    isEmpty = (entries.Length == 0);
+                }
+
+                // Return value
+                return isEmpty;
+            }
+            #endregion
+            
         #endregion
         
     }
