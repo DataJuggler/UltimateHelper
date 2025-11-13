@@ -2,11 +2,13 @@
 
 #region using statements
 
+using DataJuggler.UltimateHelper.Objects;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using DataJuggler.UltimateHelper.Objects;
+using System.Drawing;
 using System.IO;
+using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 #endregion
 
@@ -589,6 +591,36 @@ namespace DataJuggler.UltimateHelper
                 return phoneNumber;
             }
             #endregion
+
+            #region GetLineTop(int currentLine, int totalLines, int imageHeight, int lineSpacing)
+            /// <summary>
+            /// Returns the Y coordinate (top) for a given line so that all lines are centered vertically.
+            /// </summary>
+            public static int GetLineTop(int currentLine, int totalLines, int imageHeight, int verticalSpacing)
+            {
+                // initial value
+                int top = 0;
+
+                // verify all the values are set
+                if ((imageHeight > 0) && (verticalSpacing > 0) && (totalLines > 0))
+                {
+                    // local
+                    int mid = imageHeight / 2;
+
+                    // Compute total height of the text block
+                    int blockHeight = (totalLines - 1) * verticalSpacing;
+
+                    // Top of the first line so the block is centered
+                    int startY = mid - blockHeight / 2;
+
+                    // Current line top
+                    top = startY + (currentLine * verticalSpacing);
+                }
+
+                // return the top
+                return top;
+            }
+            #endregion
             
             #region GetSpacesCount(string text)
             /// <summary>
@@ -1122,6 +1154,136 @@ namespace DataJuggler.UltimateHelper
                     // For debugging only for now
                     DebugHelper.WriteDebugError("ReplaceTextInFile", "TextHelper", error);
                 }
+            }
+            #endregion
+            
+            #region SplitTextIntoLines(string text, int imageHeight, int charactersPerLine, int verticalSpacing, bool useUpperCase = true)
+            /// <summary>
+            /// returns a list of Text Into Lines
+            /// </summary>
+            public static List<TextLine> SplitTextIntoLines(string text, int imageHeight, int charactersPerLine, int verticalSpacing, bool useUpperCase = true)
+            {
+                // initial value
+                List<TextLine> lines = null;
+
+                // If the text string exists
+                if (TextHelper.Exists(text))
+                {
+                    // create a delimiter
+                    char[] delimiter = new char[] { ' ' };
+
+                    // Get the words
+                    List<Word> words = TextHelper.GetWords(text, delimiter);
+
+                    // initial value
+                    lines = new List<TextLine>();
+
+                    // locals
+                    int currentLineCharacters = 0;
+
+                    // Create a new instance of a 'TextLine' object.
+                    TextLine currentLine = new TextLine();
+
+                    // Create the Words for this line
+                    currentLine.Words = new List<Word>();
+
+                    // Add this line
+                    lines.Add(currentLine);
+
+                    // If the words collection exists and has one or more items
+                    if (ListHelper.HasOneOrMoreItems(words))
+                    {
+                        // Iterate the collection of Word objects
+                        foreach (Word word in words)
+                        {
+                            // if this word will fit in this line
+                            if ((word.Text.Length + currentLineCharacters) <= charactersPerLine)
+                            {
+                                // if this is the first word forf this line
+                                if (currentLine.Words.Count == 0)
+                                {
+                                    // if the value for useUpperCase is true
+                                    if (useUpperCase)
+                                    {
+                                        // Set the text to this line UpperCase
+                                        currentLine.Text = word.Text.ToUpper();
+                                    }
+                                    else
+                                    {
+                                        // Use Text As Is
+                                        currentLine.Text = word.Text;
+                                    }
+
+                                    // Set the currentLineCharacters value
+                                    currentLineCharacters += word.Text.Length;                                
+                                }
+                                else
+                                {
+                                    // if the value for useUpperCase is true
+                                    if (useUpperCase)
+                                    {
+                                        // add to this line
+                                        currentLine.Text += " " + word.Text.ToUpper();
+                                    }
+                                    else
+                                    {
+                                        // add to this line as is
+                                        currentLine.Text += " " + word.Text;
+                                    }
+
+                                    // Set the currentLineCharacters value
+                                    currentLineCharacters += word.Text.Length + 1;
+                                }
+
+                                // Add this word
+                                currentLine.Words.Add(word);
+                            }
+                            else
+                            {
+                                // start a new line
+                                currentLine = new TextLine();
+
+                                // Create the Words
+                                currentLine.Words = new List<Word>();
+
+                                // if the value for useUpperCase is true
+                                if (useUpperCase)
+                                {
+                                    // Set the text
+                                    currentLine.Text = word.Text.ToUpper();
+                                }
+                                else
+                                {
+                                    // use this line as is
+                                    currentLine.Text = word.Text;
+                                }
+
+                                // Set the currentLineCharacters value
+                                currentLineCharacters = word.Text.Length;         
+
+                                // Add this line
+                                lines.Add(currentLine);
+
+                                // Add this word
+                                currentLine.Words.Add(word);
+                            }
+                        }
+                    }
+                }
+
+                // If the lines collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(lines))
+                {
+                    // iterate the lines
+                    for (int x = 0; x < lines.Count; x++)
+                    {
+                        // Get the lineTop
+                        lines[x].Top = GetLineTop(x, lines.Count, imageHeight, verticalSpacing);
+                    }
+                }
+
+                // return value
+                return lines;
             }
             #endregion
             

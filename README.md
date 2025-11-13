@@ -7,7 +7,14 @@ This package was originally for .Net Framework, then ported to .Net Core, .NET, 
 
 # News
 
-11.12.2025: Veresion 9.1.3 - I added a new property Top to the TextLine object (int).
+11.12.2025: Version 9.1.6 - I added a new FontHelper class. This class makes it easy to search for installed fonts.
+This is used by a demo project I have coming up.
+
+11.12.2025: Version 9.1.5 - I added a feature that can be used with PixelDatabase.NET to
+draw text on an image. The method SplitTextIntoLines was added, and this returns a List<TextLine>
+with the Text And Top set for each image. 
+
+11.12.2025: Version 9.1.3 - I added a new property Top to the TextLine object (int).
 This property is used by PixelDatabase.NET to convert text into lines of text, and the images
 are drawn to a certain place on the image
 
