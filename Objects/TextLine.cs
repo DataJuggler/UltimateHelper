@@ -23,6 +23,7 @@ namespace DataJuggler.UltimateHelper.Objects
         private int lineNumber;
         private int index;
         private string tag;
+        private int top;
         #endregion
 
         #region Constructors
@@ -254,6 +255,18 @@ namespace DataJuggler.UltimateHelper.Objects
             {
                 get { return text; }
                 set { text = value; }
+            }
+            #endregion
+            
+            #region Top
+            /// <summary>
+            /// This property gets or sets the value for 'Top'.
+            /// This is only used in PixelDatabase.NET to convert text into lines.
+            /// </summary>
+            public int Top
+            {
+                get { return top; }
+                set { top = value; }
             }
             #endregion
             

@@ -726,7 +726,7 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region GetTextLines(string sourceText, bool parseWords = false, char[] delimiter = null)
+            #region GetTextLinesFromFile(string filePath, bool parseWords = false, char[] delimiter = null)
             /// <summary>
             /// This method returns a list of TextLine objects form a file.
             /// </summary>

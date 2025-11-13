@@ -1,10 +1,15 @@
 # UltimateHelper
+
 This library is a collection of helper classes that make working with C# much easier.
 
 This package was originally for .Net Framework, then ported to .Net Core, .NET, .NET6, .NET 7, 
-.NET 8and now .NET9.
+.NET 8 and now .NET9. .NET 10 version upgrade will happen very soon.
 
 # News
+
+11.12.2025: Veresion 9.1.3 - I added a new property Top to the TextLine object (int).
+This property is used by PixelDatabase.NET to convert text into lines of text, and the images
+are drawn to a certain place on the image
 
 7.31.2025: Version 9.1.2 - added anew method to FolderHelper called IsFolderEmpty
 This method returns true if the folder is empty.
