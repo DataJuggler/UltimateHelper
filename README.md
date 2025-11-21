@@ -2,10 +2,12 @@
 
 This library is a collection of helper classes that make working with C# much easier.
 
-This package was originally for .Net Framework, then ported to .Net Core, .NET, .NET6, .NET 7, 
-.NET 8 and now .NET9. .NET 10 version upgrade will happen very soon.
+This package was originally for .Net Framework, then ported to .Net Core, .NET5, .NET6, .NET 7, 
+.NET 8, .NET9. and now .NET 10 has just been released. 
 
 # News
+
+11.21.2025: I updated this project to .NET 10.
 
 11.12.2025: Version 9.1.6 - I added a new FontHelper class. This class makes it easy to search for installed fonts.
 This is used by a demo project I have coming up.
