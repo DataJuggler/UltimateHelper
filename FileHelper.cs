@@ -352,6 +352,37 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
+            #region IsFileInUse(string path)
+            /// <summary>
+            /// method returns the File In Use
+            /// </summary>
+            public static bool IsFileInUse(string path)
+            {
+                // initial value
+                bool inUse = false;
+            
+                // If the file exists
+                if (File.Exists(path))
+                {
+                    try
+                    {
+                        using (FileStream stream = File.Open(path, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
+                        {
+                            stream.Close();
+                        }
+                    }
+                    catch (IOException)
+                    {
+                        // set the return value
+                        inUse = true;
+                    }
+                }
+
+                // return value
+                return inUse;
+            }
+            #endregion
+
             #region RemovePartialGuid(string fileNameWithPartialGuid)
             /// <summary>
             /// returns the Partial Guid

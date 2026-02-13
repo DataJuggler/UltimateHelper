@@ -7,6 +7,8 @@ This package was originally for .Net Framework, then ported to .Net Core, .NET5,
 
 # News
 
+2.13.2026: I added a method to FileHelper - IsFileInUse. 
+
 11.21.2025: I updated this project to .NET 10.
 
 11.12.2025: Version 9.1.6 - I added a new FontHelper class. This class makes it easy to search for installed fonts.
