@@ -7,6 +7,8 @@ This package was originally for .Net Framework, then ported to .Net Core, .NET5,
 
 # News
 
+3.4.2026: Some Microsoft NuGet packages were updated. 
+
 2.13.2026: I added a method to FileHelper - IsFileInUse. 
 
 11.21.2025: I updated this project to .NET 10.
