@@ -7,7 +7,8 @@ This package was originally for .Net Framework, then ported to .Net Core, .NET5,
 
 # News
 
-3.4.2026: Some Microsoft NuGet packages were updated. 
+3.4.2026: I realized today that my GetWords method was broken by a new ReadOnlySpan I tried to use (written by ChatGPT).
+The old way worked for 20 years, so I went back to that. Also some Microsoft NuGet packages were updated. 
 
 2.13.2026: I added a method to FileHelper - IsFileInUse. 
 

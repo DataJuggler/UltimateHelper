@@ -786,7 +786,7 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region GetWords(string sourceText, char[] delimiters = null)
+            #region GetWords(string originalText)
             /// <summary>
             /// This method returns all of the words in a list of strings
             /// </summary>
@@ -794,66 +794,41 @@ namespace DataJuggler.UltimateHelper
             /// <returns></returns>
             public static List<Word> GetWords(string sourceText, char[] delimiters = null)
             {
-                 // Use stackalloc to create a ReadOnlySpan<char> from char[]
-                ReadOnlySpan<char> spanDelimiters = delimiters;
-
-                List<Word> words = GetWords(sourceText, spanDelimiters);
-
-                // return value
-                return words;
-            }
-            #endregion
-
-            #region GetWords(string originalText)
-            /// <summary>
-            /// This method returns all of the words in a list of strings
-            /// </summary>
-            /// <param name="sourceText"></param>
-            /// <returns></returns>
-            public static List<Word> GetWords(ReadOnlySpan<char> inputAsSpan, ReadOnlySpan<char> delimiters = default )
-            {
-                // Initial value
+                // initial value
                 List<Word> words = new List<Word>();
-    
-                // Local
-                int index = -1;
-    
-                // Default delimiter characters
-                ReadOnlySpan<char> defaultDelimiterChars = stackalloc char[] { ' ', '-', '/', ',', '.', ':', '\t' };
-    
-                // Use provided delimiters or default if not provided
-                ReadOnlySpan<char> delimiterChars = delimiters.Length > 0 ? delimiters : defaultDelimiterChars;
 
-                // Verify the sourceText exists
-                if (!inputAsSpan.IsEmpty)
+                // typical delimiter characters
+                char[] delimiterChars = { ' ', '-', '/', ',', '.', ':', '\t' };
+
+                // if the delimiters exists
+                if (delimiters != null)
                 {
-                    // update 11.15.2024: Switching to SpanSplitEnumerator
-                    MemoryExtensions.SpanSplitEnumerator<char> ranges = inputAsSpan.Split(delimiterChars);
+                    // use the delimiters passedin
+                    delimiterChars = delimiters;
+                }
 
-                    // iterate the ranges
-                    foreach (var segment in inputAsSpan.Split(delimiterChars))
+                // verify the sourceText exists
+                if (!String.IsNullOrEmpty(sourceText))
+                {
+                    // Get the list of strings
+                    string[] strings = sourceText.Split(delimiterChars);
+
+                    // now iterate the strings
+                    foreach (string stringWord in strings)
                     {
-                        // Get the text
-                        ReadOnlySpan<char> text = inputAsSpan[segment];
-
-                        if (!text.IsEmpty)
+                        // verify the word is not an empty string or a space
+                        if (!String.IsNullOrEmpty(stringWord))
                         {
-                            // Increment the value for index
-                            index++;
-                
                             // Create a new Word
-                            Word word = new Word(text.ToString());
-                
-                            // Set the index
-                            word.Index = index;
-                
-                            // Add this word to words collection
+                            Word word = new Word(stringWord);
+
+                            // now add this word to words collection
                             words.Add(word);
                         }
                     }
                 }
-    
-                // Return value
+
+                // return value
                 return words;
             }
             #endregion
