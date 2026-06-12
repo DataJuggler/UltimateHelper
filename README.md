@@ -7,6 +7,26 @@ This package was originally for .Net Framework, then ported to .Net Core, .NET5,
 
 # News
 
+6.12.2026: I added a new RemoveNumber methods to TextHelper
+
+    #region RemoveNumbers(string text)
+    /// <summary>
+    /// method returns the text string without any Numbers
+    /// </summary>
+    public static string RemoveNumbers(string text)
+    {
+        // Return empty string if null or empty
+        if (Exists(text))
+        {
+            // Remove all numeric digits and return
+            text =  Regex.Replace(text, @"\d", "");
+        }
+
+        // return value
+        return text;
+    }
+    #endregion
+
 3.4.2026: I realized today that my GetWords method was broken by a new ReadOnlySpan I tried to use (written by ChatGPT).
 The old way worked for 20 years, so I went back to that. Also some Microsoft NuGet packages were updated. 
 

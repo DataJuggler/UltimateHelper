@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
+using System.Text.RegularExpressions;
 
 #endregion
 
@@ -1040,6 +1040,24 @@ namespace DataJuggler.UltimateHelper
 
                 // return value
                 return startsWithAVowel;
+            }
+            #endregion
+
+            #region RemoveNumbers(string text)
+            /// <summary>
+            /// method returns the text string without any Numbers
+            /// </summary>
+            public static string RemoveNumbers(string text)
+            {
+                // Return empty string if null or empty
+                if (Exists(text))
+                {
+                    // Remove all numeric digits and return
+                    text =  Regex.Replace(text, @"\d", "");
+                }
+
+                // return value
+                return text;
             }
             #endregion
             
