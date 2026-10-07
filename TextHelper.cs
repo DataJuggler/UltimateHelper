@@ -1049,7 +1049,7 @@ namespace DataJuggler.UltimateHelper
             /// </summary>
             public static string RemoveNumbers(string text)
             {
-                // Return empty string if null or empty
+                // if the text exists
                 if (Exists(text))
                 {
                     // Remove all numeric digits and return

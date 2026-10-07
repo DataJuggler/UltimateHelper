@@ -47,6 +47,28 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
+            #region HasExactlyXItems(IList list, int x)
+            /// <summary>
+            /// This method returns true if the List specified exists and has exactly
+            /// as many items as the value of x.
+            /// </summary>
+            public static bool HasExactlyXItems(IList list, int x)
+            {
+                // initial value
+                bool hasExactlyXItems = false;
+
+                // if there are exactly x items
+                if ((HasXOrMoreItems(list, x) && (list.Count == x)))
+                {
+                    // set to true
+                    hasExactlyXItems = true;
+                }
+
+                // return value
+                return hasExactlyXItems;
+            }
+            #endregion
+
             #region HasOneOrMoreItems(IList list)
             /// <summary>
             /// This method returns true if the List specified exists and hast 1 or more items.
@@ -110,7 +132,7 @@ namespace DataJuggler.UltimateHelper
             }
             #endregion
 
-            #region HasXOrMoreItems(IList list)
+            #region HasXOrMoreItems(IList list, int x)
             /// <summary>
             /// This method returns true if the List specified exists and hast at least
             /// as many items as the value of x.

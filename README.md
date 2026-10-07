@@ -5,7 +5,39 @@ This library is a collection of helper classes that make working with C# much ea
 This package was originally for .Net Framework, then ported to .Net Core, .NET5, .NET6, .NET 7, 
 .NET 8, .NET9. and now .NET 10 has just been released. 
 
-# News
+10.7.2026: I added a new HasExactlyXItems method to ListHelper HasExactlyXItems
+
+    #region HasExactlyXItems(IList list, int x)
+    /// <summary>
+    /// This method returns true if the List specified exists and has exactly
+    /// as many items as the value of x.
+    /// </summary>
+    public static bool HasExactlyXItems(IList list, int x)
+    {
+        // initial value
+        bool hasExactlyXItems = false;
+
+        // if there are exactly x items
+        if ((HasXOrMoreItems(list, x)) && (list.Count == x))
+        {
+            // set to true
+            hasExactlyXItems = true;
+        }
+
+        // return value
+        return hasExactlyXItems;
+    }
+    #endregion
+
+Example:
+
+    // if exactly 4 cards are left
+    if (ListHelper.HasExactlyXItems(remainingCards, 4))
+    {
+        // auto solve the last 4 cards
+        AutoSolve();
+    }
+
 
 6.12.2026: I added a new RemoveNumber methods to TextHelper
 
