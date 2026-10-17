@@ -5,6 +5,8 @@ This library is a collection of helper classes that make working with C# much ea
 This package was originally for .Net Framework, then ported to .Net Core, .NET5, .NET6, .NET 7, 
 .NET 8, .NET9. and now .NET 10 has just been released. 
 
+10.17.2026: DateHelper was merged with the .NET Framework version.
+
 10.7.2026: I added a new HasExactlyXItems method to ListHelper HasExactlyXItems
 
     #region HasExactlyXItems(IList list, int x)

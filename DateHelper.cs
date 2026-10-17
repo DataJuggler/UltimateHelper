@@ -4,9 +4,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.IO;
 
 #endregion
 
@@ -19,9 +20,78 @@ namespace DataJuggler.UltimateHelper
     /// </summary>
     public class DateHelper
     {
-        
+
         #region Methods
-    
+
+            #region GetDateText(DateTime date, bool addCommaAfterDay = true, bool addCommaBeforeYear = true)
+            /// <summary>
+            /// This method returns the Date Text, such as Friday, October 16, 2026
+            /// </summary>
+            /// <param name="date">The date to return the text for.</param>
+            /// <param name="addCommaAfterDay">If true, a comma is added after the day of week.</param>
+            /// <param name="addCommaBeforeYear">If true, a comma is added before the year.</param>
+            /// <returns></returns>
+            public static string GetDateText(DateTime date, bool addCommaAfterDay = true, bool addCommaBeforeYear = true)
+            {
+                // initial value
+                string dateText = "";
+
+                // local
+                StringBuilder sb = new StringBuilder();
+
+                // Add the day of week
+                sb.Append(date.DayOfWeek.ToString());
+
+                // if the value for addCommaAfterDay is true
+                if (addCommaAfterDay)
+                {
+                    // add a comma and a space
+                    sb.Append(", ");
+                }
+                else
+                {
+                    // add a space
+                    sb.Append(" ");
+                }
+
+                // string monthName = "";
+                DateTimeFormatInfo mfi = new System.Globalization.DateTimeFormatInfo();
+
+                // Set the monthName
+                string monthName = mfi.GetMonthName(date.Month);
+
+                // Append the monthName
+                sb.Append(monthName);
+
+                // add a space before the day
+                sb.Append(" ");
+
+                // Append the day
+                sb.Append(date.Day);
+
+                // if addCommaBeforeYear is true
+                if (addCommaBeforeYear)
+                {
+                     // add a comma and a space
+                    sb.Append(", ");
+                }
+                else
+                {
+                    // add a space
+                    sb.Append(" ");
+                }
+
+                // append the year
+                sb.Append(date.Year);
+
+                // set the return value
+                dateText = sb.ToString();
+
+                // return value
+                return dateText;
+            }
+            #endregion
+
             #region GetFileNameWithTimestamp(string filename)
             /// <summary>
             /// This method Get File Name With Timestamp
@@ -30,6 +100,9 @@ namespace DataJuggler.UltimateHelper
             {
                 // initial value
                 string fileNameWithTimeStamp = "";
+
+                // locals
+                string fileNameWithoutExtension = "";
 
                 // If the filename string exists
                 if (TextHelper.Exists(filename))
@@ -40,8 +113,8 @@ namespace DataJuggler.UltimateHelper
                     // Create a fileInfo object
                     FileInfo fileInfo = new FileInfo(filename);
 
-                    // Get the name of the file
-                    string fileNameWithoutExtension = fileInfo.Name.Substring(0, fileInfo.Name.LastIndexOf("."));
+                    // Get the name of the file without the extension (safe if there is no extension)
+                    fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileInfo.Name);
 
                     // set the return value
                     fileNameWithTimeStamp = fileNameWithoutExtension + " - " + timestamp + fileInfo.Extension;
@@ -49,11 +122,97 @@ namespace DataJuggler.UltimateHelper
                     // Add the folder back
                     fileNameWithTimeStamp = Path.Combine(fileInfo.DirectoryName, fileNameWithTimeStamp);
                 }
-                
+
                 // return value
                 return fileNameWithTimeStamp;
             }
-        #endregion
+            #endregion
+
+            #region GetFirstSaturday(int month = 0, int year = 0)
+            /// <summary>
+            /// This method returns the First Saturday of the month.
+            /// If no month is passed in, the current month is used, and if this month's
+            /// first Saturday has already occurred, next month's first Saturday is returned.
+            /// If a month is passed in, the first Saturday of that month is returned.
+            /// </summary>
+            /// <param name="month">An optional parameter to specify the month to return the first Saturday.</param>
+            /// <param name="year">An optional parameter to specify the year to return the first Saturday.
+            /// The month is required if this parameter is passed in.</param>
+            /// <returns></returns>
+            public static DateTime GetFirstSaturday(int month = 0, int year = 0)
+            {
+                // initial value
+                DateTime firstSaturday = DateTime.MinValue;
+
+                // locals
+                DateTime nextMonthFirstSaturday = DateTime.MinValue;
+                bool useCurrentMonth = (month == 0);
+
+                // get the current time
+                DateTime now = DateTime.Now;
+
+                // if a year was passed in without a month
+                if ((year > 0) && (month == 0))
+                {
+                    // raise an error if a year was supplied but not a month
+                    throw new Exception("A month must be supplied if a year is given.");
+                }
+                else if (year == 0)
+                {
+                    // use this year
+                    year = now.Year;
+                }
+
+                // if the month was not passed in
+                if (month == 0)
+                {
+                    // set the month to this month
+                    month = now.Month;
+                }
+
+                // iterate up to 7 days
+                for (int x = 1; x < 8; x++)
+                {
+                    // find the first Saturday
+                    firstSaturday = new DateTime(year, month, x);
+
+                    // if this is a Saturday
+                    if (firstSaturday.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        // break out of the loop
+                        break;
+                    }
+                }
+
+                // if the current month is being used and this month's first Saturday has already occurred.
+                if ((useCurrentMonth) && (now.Day > firstSaturday.Day))
+                {
+                    // get next month
+                    int nextMonth = firstSaturday.AddMonths(1).Month;
+                    int nextMonthsYear = firstSaturday.AddMonths(1).Year;
+
+                    // iterate up to 7 days
+                    for (int x = 1; x < 8; x++)
+                    {
+                        // find next month's first Saturday
+                        nextMonthFirstSaturday = new DateTime(nextMonthsYear, nextMonth, x);
+
+                        // if this is a Saturday
+                        if (nextMonthFirstSaturday.DayOfWeek == DayOfWeek.Saturday)
+                        {
+                            // set the return value
+                            firstSaturday = nextMonthFirstSaturday;
+
+                            // break out of the loop
+                            break;
+                        }
+                    }
+                }
+
+                // return value
+                return firstSaturday;
+            }
+            #endregion
 
             #region GetMinutesThisMillennium()
             /// <summary>
@@ -78,7 +237,7 @@ namespace DataJuggler.UltimateHelper
 
             #region GetMinutesThisMillennium(DateTime time)
             /// <summary>
-            /// This method returns the number of minutes since January 1, 2000
+            /// This method returns the number of minutes between January 1, 2000 and the time given
             /// </summary>
             /// <returns></returns>
             public static int GetMinutesThisMillennium(DateTime time)
@@ -90,7 +249,7 @@ namespace DataJuggler.UltimateHelper
                 DateTime y2k = new DateTime(2000, 1, 1);
 
                 // set the return value
-                minutes = (int) time.Subtract(DateTime.Now).TotalMinutes;
+                minutes = (int) time.Subtract(y2k).TotalMinutes;
 
                 // return value
                 return minutes;
@@ -100,9 +259,9 @@ namespace DataJuggler.UltimateHelper
             #region GetMonthEnd(int year = 0, int month = 0)
             /// <summary>
             /// This method returns date at the end of the month.
+            /// </summary>
             /// <param name="year">The year used to return the start date and end date</param>
             /// <param name="month">The month to return the start date and end date</param>
-            /// </summary>
             public static DateTime GetMonthEnd(int year = 0, int month = 0)
             {
                 // initial value
@@ -138,8 +297,8 @@ namespace DataJuggler.UltimateHelper
                 return monthEnd;
             }
             #endregion
-            
-            #region GetMonthName(DateTime date)
+
+            #region GetMonthName(DateTime date, bool abbreviate = false)
             /// <summary>
             /// This method returns the Month Name
             /// </summary>
@@ -257,12 +416,11 @@ namespace DataJuggler.UltimateHelper
                     monthName = TextHelper.CapitalizeFirstChar(monthName.Substring(0, 3).ToLower());
                 }
 
-                
                 // return value
                 return monthName;
             }
             #endregion
-            
+
             #region GetMonthStart(int year = 0, int month = 0)
             /// <summary>
             /// This method returns the Month Start
@@ -311,7 +469,8 @@ namespace DataJuggler.UltimateHelper
 
                 // Get the month
                 string month = GetMonthName(date, abbreviateMonthName);
-                
+
+                // if addComma is true
                 if (addComma)
                 {
                     // Create the text such as August 5, 2021 or Aug 5, 2021
@@ -327,15 +486,15 @@ namespace DataJuggler.UltimateHelper
                 return text;
             }
             #endregion
-            
+
             #region GetShortDateTime(DateTime date)
             /// <summary>
-            /// This method returns the Time and Date of the string given.
+            /// This method returns the short date and short time of the date given.
             /// </summary>
             public static string GetShortDateTime(DateTime date)
             {
                 // initial value
-                string time = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
+                string time = date.ToShortDateString() + " " + date.ToShortTimeString();
 
                 // return value
                 return time;
@@ -369,7 +528,7 @@ namespace DataJuggler.UltimateHelper
 
                 // Setup the Timestamp
                 timestamp = sb.ToString();
-                
+
                 // return value
                 return timestamp;
             }
@@ -452,7 +611,7 @@ namespace DataJuggler.UltimateHelper
                 return twoDigitMinute;
             }
             #endregion
-   
+
             #region GetTwoDigitMonth(DateTime date)
             /// <summary>
             /// This method returns the month for the date given.
@@ -478,7 +637,7 @@ namespace DataJuggler.UltimateHelper
                 return twoDigitMonth;
             }
             #endregion
-            
+
             #region IsAfter(DateTime sourceDate, DateTime targetDate, bool includeTime = true)
             /// <summary>
             /// This method returns true if the targetDate comes AFTER the sourceDate.
@@ -513,7 +672,7 @@ namespace DataJuggler.UltimateHelper
             public static bool IsBefore(DateTime sourceDate, DateTime targetDate, bool includeTime = true)
             {
                 // initial value
-                bool isAfter = false;
+                bool isBefore = false;
 
                 // if time should be Not be included in the comparison
                 if (!includeTime)
@@ -526,10 +685,10 @@ namespace DataJuggler.UltimateHelper
                 }
 
                 // compare the dates
-                isAfter = (targetDate < sourceDate);
+                isBefore = (targetDate < sourceDate);
 
                 // return value
-                return isAfter;
+                return isBefore;
             }
             #endregion
 
@@ -558,8 +717,8 @@ namespace DataJuggler.UltimateHelper
                         // if the value for isDate is true
                         if (isDate)
                         {
-                            // if the date did not parse to a valid range
-                            if ((actualDate.Year < 1900) || (actualDate.Year > DateTime.Now.Year))
+                            // if the date is before 1900 (future dates are valid, such as an Expiration Date)
+                            if (actualDate.Year < 1900)
                             {
                                 // not a valid date
                                 isDate = false;
@@ -603,6 +762,45 @@ namespace DataJuggler.UltimateHelper
 
                 // return value
                 return isDateInRange;
+            }
+            #endregion
+
+            #region IsNullDate(DateTime date)
+            /// <summary>
+            /// This method returns true if the date passed in is on or before NullDate (1/1/1900).
+            /// </summary>
+            /// <param name="date"></param>
+            /// <returns></returns>
+            public static bool IsNullDate(DateTime date)
+            {
+                // initial value
+                bool isNullDate = (date.Date <= NullDate);
+
+                // return value
+                return isNullDate;
+            }
+            #endregion
+
+            #region IsNullDate(DateTime? nullableDate)
+            /// <summary>
+            /// This method returns true if the nullableDate passed in is null, or is on or before NullDate (1/1/1900).
+            /// </summary>
+            /// <param name="nullableDate"></param>
+            /// <returns></returns>
+            public static bool IsNullDate(DateTime? nullableDate)
+            {
+                // initial value
+                bool isNullDate = true;
+
+                // If the nullableDate has a value
+                if (nullableDate.HasValue)
+                {
+                    // check the value against NullDate
+                    isNullDate = IsNullDate(nullableDate.Value);
+                }
+
+                // return value
+                return isNullDate;
             }
             #endregion
 
@@ -662,12 +860,12 @@ namespace DataJuggler.UltimateHelper
 
             #region ParseEightDigitDate(string dateText)
             /// <summary>
-            /// returns the Date from a format yyyymmdd.
+            /// This method returns the Date from a format yyyymmdd. If the dateText is not a valid date, NullDate (1/1/1900) is returned.
             /// </summary>
             public static DateTime ParseEightDigitDate(string dateText)
             {
                 // initial value
-                DateTime date = new DateTime(1900, 1, 1);
+                DateTime date = NullDate;
 
                 // locals
                 string yearText = "";
@@ -708,20 +906,90 @@ namespace DataJuggler.UltimateHelper
                     month = NumericHelper.ParseInteger(monthText, 0, -1);
                     day = NumericHelper.ParseInteger(dayText, 0, -1);
 
-                    if ((year > 0) && (month > 0) && (day > 0))
+                    // if the year and month are in range
+                    if ((year > 0) && (month >= 1) && (month <= 12))
                     {
-                        // Set the date
-                        date = new DateTime(year, month, day);
+                        // if the day is in range for this month
+                        if ((day >= 1) && (day <= DateTime.DaysInMonth(year, month)))
+                        {
+                            // Set the date
+                            date = new DateTime(year, month, day);
+                        }
                     }
                 }
-    
+
                 // return value
                 return date;
             }
             #endregion
-            
+
+            #region ToDateTime(DateTime? nullableDate)
+            /// <summary>
+            /// This method converts a nullable DateTime to a DateTime. If the value is null, NullDate (1/1/1900) is returned.
+            /// </summary>
+            /// <param name="nullableDate"></param>
+            /// <returns></returns>
+            public static DateTime ToDateTime(DateTime? nullableDate)
+            {
+                // initial value
+                DateTime convertedDate = NullDate;
+
+                // If the nullableDate has a value
+                if (nullableDate.HasValue)
+                {
+                    // set the return value
+                    convertedDate = nullableDate.Value;
+                }
+
+                // return value
+                return convertedDate;
+            }
+            #endregion
+
+            #region ToNullableDateTime(DateTime date)
+            /// <summary>
+            /// This method converts a DateTime to a nullable DateTime. If the date is on or before NullDate (1/1/1900), null is returned.
+            /// A nullable return type is required here, since returning null is the purpose of this method.
+            /// </summary>
+            /// <param name="date"></param>
+            /// <returns></returns>
+            public static DateTime? ToNullableDateTime(DateTime date)
+            {
+                // initial value
+                DateTime? convertedDate = null;
+
+                // If the date is not a NullDate
+                if (!IsNullDate(date))
+                {
+                    // set the return value
+                    convertedDate = date;
+                }
+
+                // return value
+                return convertedDate;
+            }
+            #endregion
+
         #endregion
-            
+
+        #region Properties
+
+            #region NullDate
+            /// <summary>
+            /// This read only property returns the date used to represent a null or not set date (1/1/1900).
+            /// </summary>
+            public static DateTime NullDate
+            {
+                get
+                {
+                    // return value
+                    return new DateTime(1900, 1, 1);
+                }
+            }
+            #endregion
+
+        #endregion
+
     }
     #endregion
 
