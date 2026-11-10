@@ -1,5 +1,7 @@
 # UltimateHelper
 
+11.10.2026: This project has been updated to .NET 11!
+
 This library is a collection of helper classes that make working with C# much easier.
 
 This package was originally for .Net Framework, then ported to .Net Core, .NET5, .NET6, .NET 7, 
